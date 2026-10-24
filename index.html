@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSTAY — Stay Simple. Stay Curious.</title>
+<meta name="description" content="Residential stays across Japan & Asia. Borderless peace of mind for a journey that is truly yours.">
+<meta property="og:title" content="OSTAY — Stay Simple. Stay Curious.">
+<meta property="og:description" content="Residential stays across Japan & Asia.">
+<meta property="og:image" content="assets/hero/dotonbori-rooftop.jpg">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="OSTAY home"><img src="assets/brand/ostay-logo.png" alt="OSTAY"></a>
+    <nav class="nav" id="nav">
+      <a href="#why">Experience</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#members">Membership</a>
+      <a href="#concierge">About OSTAY</a>
+    </nav>
+    <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener">Book your stay <span class="arr ext">↗</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero__bg" role="img" aria-label="A spacious OSTAY living room with a view of Mt. Fuji"></div>
+  <div class="wrap">
+    <div class="hero__panel reveal">
+      <p class="eyebrow">Residential stays · Japan &amp; Asia</p>
+      <h1>Stay Simple.<br>Stay Curious.</h1>
+      <p class="sub">Borderless peace of mind for a journey that is truly yours.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--yellow" data-booking="main" href="#" target="_blank" rel="noopener">Book your stay <span class="arr ext">↗</span></a>
+        <a class="link" href="#why">Why OSTAY <span>↓</span></a>
+      </div>
+      <p class="note">* Opens our external booking site.</p>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL<i></i></div>
+  <svg class="wave" viewBox="0 0 1800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C300 0 600 0 900 30 S1500 60 1800 30 V60 H0Z" fill="#F7F1E6"/></svg>
+</section>
+
+<!-- 01 Destinations -->
+<section class="section dest" id="destinations">
+  <div class="wrap">
+    <div class="dest__head reveal">
+      <div>
+        <p class="eyebrow">01 · Destinations</p>
+        <h2 class="h2">Where will your next<br>everyday be?</h2>
+      </div>
+      <p class="lead">Five cities, hand-picked homes. Choose a city to see our stays — each one books directly on Booking.com.</p>
+    </div>
+    <div class="tabs reveal" role="tablist" id="cityTabs"></div>
+    <div class="dest__meta">
+      <span id="cityCount">Osaka · 7 stays</span>
+      <a class="link" id="cityAll" href="#" target="_blank" rel="noopener">View all Tokyo stays on Booking.com <span>↗</span></a>
+    </div>
+    <div class="hotels" id="hotels" aria-live="polite"></div>
+    <p class="carousel-count note" id="carouselCount" style="display:none;margin-top:12px">1 / 6</p>
+    <p class="note">* All Booking.com buttons open the listing in a new tab.</p>
+  </div>
+</section>
+
+<!-- 02 Members -->
+<section class="section members" id="members">
+  <svg class="wave top" viewBox="0 0 1800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C400 0 800 0 1100 25 S1600 60 1800 20 V60 H0Z" fill="#EFE4D2"/></svg>
+  <div class="wrap members__grid">
+    <div class="reveal">
+      <p class="eyebrow">02 · OSTAY Members</p>
+      <h2 class="h2" style="font-size:clamp(40px,4.4vw,64px)">Stay more.<br>Get more.</h2>
+      <p class="lead" style="font-size:17px">Membership is complimentary for every OSTAY guest — and it pays off from your very first stay: a concierge on call, a stocked pantry, a fresh room and a night to share.</p>
+      <div class="member-card" id="memberCard">
+        <i class="ring r1"></i><i class="ring r2"></i>
+        <img src="assets/brand/ostay-logo.png" alt="OSTAY">
+        <span>MEMBERS</span>
+      </div>
+    </div>
+    <div class="acc reveal" id="acc">
+      <div class="acc__item open">
+        <button class="acc__btn" aria-expanded="true">
+          <span class="acc__num">01 · Daily concierge</span>
+          <span class="acc__title">A local friend on call, every day of your trip.</span>
+          <span class="acc__icon">–</span>
+        </button>
+        <div class="acc__panel"><div><div class="acc__content">
+          <div>
+            <p>9:00–22:00 daily. Check-in help, car arrangements, luggage delivery and ticket booking. Babysitting coming soon.</p>
+            <div class="hotel__tags"><span class="tag">All members</span><span class="tag">Every day</span></div>
+          </div>
+          <img class="acc__img" src="assets/members/concierge-imamiya-lobby.jpg" alt="" loading="lazy">
+        </div></div></div>
+      </div>
+      <div class="acc__item">
+        <button class="acc__btn" aria-expanded="false">
+          <span class="acc__num">02 · Local pantry</span>
+          <span class="acc__title">Arrive to a stocked kitchen, not an empty fridge.</span>
+          <span class="acc__icon">+</span>
+        </button>
+        <div class="acc__panel"><div><div class="acc__content"><div>
+          <p>A complimentary selection of local snacks and ingredients, waiting in your room on arrival.</p>
+          <div class="hotel__tags"><span class="tag">Once per member</span><span class="tag">Up to 4 guests</span></div>
+        </div></div></div></div>
+      </div>
+      <div class="acc__item">
+        <button class="acc__btn" aria-expanded="false">
+          <span class="acc__num">03 · Mid-stay clean</span>
+          <span class="acc__title">Fresh sheets halfway through — on the house.</span>
+          <span class="acc__icon">+</span>
+        </button>
+        <div class="acc__panel"><div><div class="acc__content"><div>
+          <p>One free room clean in the middle of your stay, so day five feels like day one.</p>
+          <div class="hotel__tags"><span class="tag">Stays of 3+ nights</span><span class="tag">Once per member</span></div>
+        </div></div></div></div>
+      </div>
+      <div class="acc__item">
+        <button class="acc__btn" aria-expanded="false">
+          <span class="acc__num">04 · Refer a friend</span>
+          <span class="acc__title">Bring a friend. Earn a free night.</span>
+          <span class="acc__icon">+</span>
+        </button>
+        <div class="acc__panel"><div><div class="acc__content"><div>
+          <p>When a friend you refer books 5 nights or more, you receive a voucher for one free night.</p>
+          <div class="hotel__tags"><span class="tag">Friend books 5+ nights</span><span class="tag">Once per member</span></div>
+        </div></div></div></div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave bottom" viewBox="0 0 1800 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 C300 50 700 50 1000 25 S1500 0 1800 30 V50 H0Z" fill="#F7F1E6"/></svg>
+</section>
+
+<!-- 03 Say Hello -->
+<section class="contact" id="contact">
+  <div class="wrap contact__grid">
+    <div class="reveal">
+      <p class="eyebrow">03 · Say hello</p>
+      <h2 class="h2">Let’s find your<br>next journey together.</h2>
+      <p class="lead">Questions about stays or long-term options? We’d love to hear from you.</p>
+    </div>
+    <!-- Replace YOUR_FORM_ID with your Formspree form ID (https://formspree.io) -->
+    <form class="form reveal" id="helloForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Alex Smith" required autocomplete="name"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="hello@example.com" required autocomplete="email"></div>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <button class="btn btn--yellow" type="submit">Send message <span class="arr fwd">→</span></button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- 04 Why OSTAY -->
+<section id="why">
+  <div class="wrap why__intro reveal">
+    <p class="eyebrow">04 · Why OSTAY</p>
+    <h2 class="h2">Three reasons to stay like a local.</h2>
+  </div>
+
+  <div class="band band--space">
+    <div class="wrap"><div class="band__card reveal">
+      <div class="band__num">01</div>
+      <p class="eyebrow" style="margin-top:16px">Space</p>
+      <h3>Room to Breathe</h3>
+      <p class="tagline">Generous space that gives your mind room, too.</p>
+      <p class="body">Layouts with a place for everyone, even for a family of four — room for kids at play and for grown-ups unwinding on the sofa.</p>
+      <ul class="dots"><li>Living &amp; dining for the whole family</li><li>A kitchen of your own</li><li>Short or long stays</li></ul>
+      <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener">Find a spacious stay <span class="arr ext">↗</span></a>
+    </div></div>
+  </div>
+
+  <div class="band band--city band--right">
+    <div class="wrap"><div class="band__card reveal">
+      <div class="band__num">02</div>
+      <p class="eyebrow" style="margin-top:16px">City connection</p>
+      <h3>In the Heart of the City</h3>
+      <p class="tagline">A base connected to the pulse of the city.</p>
+      <p class="body">Step outside into the lively heart of town. Shop the markets, eat your way through the streets, and never worry about the way home.</p>
+      <ul class="dots"><li>Near stations &amp; downtown</li><li>Local markets &amp; street food</li><li>Easy evening walks</li></ul>
+      <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener">Find a city-centre stay <span class="arr ext">↗</span></a>
+    </div></div>
+  </div>
+
+  <div class="band band--tech">
+    <div class="wrap"><div class="band__card reveal">
+      <div class="band__num">03</div>
+      <p class="eyebrow" style="margin-top:16px">Smart check-in</p>
+      <h3>Seamless Technology</h3>
+      <p class="tagline">Invisible intelligence, seamless experience.</p>
+      <p class="body">Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? We’re online anytime.</p>
+      <ul class="dots"><li>Self check-in by smart lock</li><li>Contact-free entry</li><li>Online support, anytime</li></ul>
+      <a class="btn btn--yellow btn--sm" href="#concierge">How smart check-in works <span class="arr fwd">→</span></a>
+    </div></div>
+  </div>
+</section>
+
+<!-- 05 Concierge -->
+<section class="section" id="concierge">
+  <div class="wrap cons__grid">
+    <div class="reveal">
+      <p class="eyebrow">05 · Concierge</p>
+      <h2 class="h2">Free to explore.<br>Safe to return.</h2>
+      <div class="points">
+        <div><b>01</b><h4>24/7 online support</h4><p>Whenever you need help on your trip, reach us online anytime.</p></div>
+        <div><b>02</b><h4>Safe, secure stays</h4><p>We only feature residential hotels designed with security in mind.</p></div>
+        <div><b>03</b><h4>Home-like comfort</h4><p>Everything you need for daily life, from short trips to long stays.</p></div>
+        <div><b>04</b><h4>Guest relations</h4><p>From booking to check-out, we keep your journey running smoothly.</p></div>
+      </div>
+    </div>
+    <div class="services reveal">
+      <h5>OSTAY CONCIERGE SERVICES</h5>
+      <ul>
+        <li><img src="assets/icons/airport.svg" alt="">Airport transfer</li>
+        <li><img src="assets/icons/car.svg" alt="">Car rental</li>
+        <li><img src="assets/icons/local.svg" alt="">Local experiences</li>
+        <li><img src="assets/icons/restaurant.svg" alt="">Restaurant booking</li>
+        <li><img src="assets/icons/wifi.svg" alt="">Wi-Fi rental</li>
+        <li><img src="assets/icons/laundry.svg" alt="">Laundry</li>
+        <li><img src="assets/icons/support.svg" alt="">24h support</li>
+      </ul>
+      <p class="partner">●&nbsp; We partner with trusted locals to make every stay safe and special.</p>
+      <a class="btn btn--ghost btn--sm" href="#contact">Ask our concierge <span class="arr fwd">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Booking CTA -->
+<section class="cta">
+  <div class="wrap">
+    <div class="cta__box reveal">
+      <p class="eyebrow">Book your stay</p>
+      <h2>Your next everyday<br>starts here.</h2>
+      <p>Five cities. Hand-picked homes. Booked in a few clicks.</p>
+      <div class="cta__btns">
+        <a class="btn btn--dark" data-booking="main" href="#" target="_blank" rel="noopener">Book your stay <span class="arr ext">↗</span></a>
+        <a class="btn btn--ghost" href="#destinations">See all destinations <span class="arr down">↓</span></a>
+      </div>
+      <p class="note">* Opens our external booking site.</p>
+      <img class="cta__mascot" src="assets/brand/mascot-family.webp" alt="The OSTAY family mascots">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <svg class="wave top" viewBox="0 0 1800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 35 C350 0 750 10 1050 30 S1550 55 1800 25 V60 H0Z" fill="#EFE4D2"/></svg>
+  <div class="wrap">
+    <div class="footer__top">
+      <p class="footer__slogan">Stay Simple.<br>Stay Curious.</p>
+      <div class="support">
+        <div class="support__col">
+          <p class="eyebrow">Customer support</p>
+          <dl>
+            <dt>Emergency</dt><dd><a href="tel:+81345883364">03 4588 3364</a></dd>
+            <dt>Email</dt><dd><a href="mailto:vip@ostay.net">vip@ostay.net</a></dd>
+            <dt>WhatsApp</dt><dd><a href="https://wa.me/818067467880" target="_blank" rel="noopener">+81 8067467880</a></dd>
+            <dt>LINE ID</dt><dd>18918689798</dd>
+            <dt>WeCom</dt><dd>18918689798</dd>
+          </dl>
+        </div>
+        <div class="support__col">
+          <p class="eyebrow">Scan to chat</p>
+          <div class="qrs">
+            <figure class="qr"><img src="assets/qr/line.png" alt="LINE QR code" loading="lazy"><figcaption>LINE</figcaption></figure>
+            <figure class="qr"><img src="assets/qr/whatsapp.png" alt="WhatsApp QR code" loading="lazy"><figcaption>WhatsApp</figcaption></figure>
+            <figure class="qr"><img src="assets/qr/wechat.png" alt="WeChat QR code" loading="lazy"><figcaption>WeChat</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <img src="assets/brand/ostay-logo.png" alt="OSTAY">
+      <div class="footer__links">
+        <a data-booking="main" href="#" target="_blank" rel="noopener">Official site ↗</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy</a>
+      </div>
+      <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile sticky booking bar -->
+<div class="sticky-book" id="stickyBook">
+  <span>Five cities · Hand-picked homes</span>
+  <a class="btn btn--yellow" data-booking="main" href="#" target="_blank" rel="noopener">Book <span class="arr ext">↗</span></a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
