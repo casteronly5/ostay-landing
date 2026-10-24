@@ -34,7 +34,7 @@ button,input{font:inherit;color:inherit}
 .header.scrolled{box-shadow:0 1px 0 rgba(45,41,38,.12)}
 .header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
 .header .logo img{height:36px;width:auto}
-.nav{display:flex;gap:44px;font-size:14px;font-weight:600}
+.nav{display:flex;gap:44px;font-size:14px;font-weight:600;margin-left:auto;margin-right:48px}
 .nav a{position:relative}
 .nav a::after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--yellow);transition:width .3s var(--ease)}
 .nav a:hover::after{width:100%}
@@ -45,8 +45,8 @@ button,input{font:inherit;color:inherit}
 .hero{position:relative;height:min(1200px,100vh);min-height:720px;overflow:hidden;padding-top:88px}
 .hero__bg{position:absolute;inset:88px 0 0 0;background:var(--sand) url(assets/hero/dotonbori-rooftop.jpg) center/cover no-repeat;animation:heroZoom 14s var(--ease) both}
 @keyframes heroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
-.hero__panel{position:relative;z-index:2;margin-top:clamp(60px,12vh,160px);max-width:560px;background:rgba(247,241,230,.9);padding:48px 48px 40px;border-radius:24px}
-.hero h1{font-size:clamp(44px,5.4vw,80px);font-weight:600;line-height:1.12;letter-spacing:-.02em;margin:18px 0 20px}
+.hero__panel{position:relative;z-index:2;margin-top:clamp(60px,12vh,160px);max-width:660px;background:rgba(247,241,230,.9);padding:48px 52px 40px;border-radius:24px}
+.hero h1{white-space:nowrap;font-size:clamp(44px,4.6vw,76px);font-weight:600;line-height:1.12;letter-spacing:-.02em;margin:18px 0 20px}
 .hero p.sub{font-size:20px;max-width:340px}
 .hero__ctas{display:flex;align-items:center;gap:32px;margin-top:36px;flex-wrap:wrap}
 .hero .note{margin-top:16px}
@@ -120,7 +120,7 @@ button,input{font:inherit;color:inherit}
 .contact__grid{display:grid;grid-template-columns:1fr 760px;gap:80px}
 .form{display:flex;flex-direction:column;gap:32px}
 .field label{display:block;font-size:13px;font-weight:600;margin-bottom:10px}
-.field input{width:100%;border:0;border-bottom:1.5px solid var(--obsidian);background:transparent;padding:12px 0;font-size:16px;outline:none;transition:border-color .3s}
+.field input{width:100%;border:0;border-bottom:1px solid rgba(45,41,38,.25);background:transparent;padding:12px 0;font-size:16px;outline:none;transition:border-color .3s}
 .field input:focus{border-color:var(--yellow)}
 .form .btn{align-self:flex-start}
 .form-status{font-size:14px;min-height:1.4em}
@@ -132,30 +132,36 @@ button,input{font:inherit;color:inherit}
 .band--city{background-image:url(assets/why/02-city-dotonbori-rooftop.jpg)}
 .band--tech{background-image:url(assets/why/03-tech-imamiya-lobby.jpg)}
 .band .wrap{width:100%}
-.band__card{max-width:620px;background:rgba(247,241,230,.92);padding:56px 50px;border-radius:24px}
+.band__card{max-width:660px;background:rgba(247,241,230,.92);padding:56px 50px;border-radius:24px}
 .band--right .band__card{margin-left:auto}
 .band__num{font-size:96px;font-weight:300;line-height:1}
 .band h3{font-size:44px;font-weight:600;line-height:1.2;margin:10px 0 18px}
 .band .tagline{font-size:20px;font-weight:600}
 .band p.body{font-size:16px;margin-top:12px}
-.dots{list-style:none;display:flex;flex-direction:column;gap:10px;margin:24px 0 30px;font-size:13px;font-weight:600}
+.dots{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;margin:24px 0 30px;font-size:13px;font-weight:600}
 .dots li{display:flex;align-items:center;gap:12px}
 .dots li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--yellow)}
 
 /* Concierge */
-.cons__grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:0}
-.points{display:grid;grid-template-columns:1fr 1fr;gap:48px 40px;margin-top:56px}
-.points b{font-size:14px}
-.points h4{font-size:22px;font-weight:600;margin:6px 0 8px}
-.points p{font-size:14px;max-width:320px}
-.services h5{font-size:13px;font-weight:600;letter-spacing:.14em;padding-bottom:20px;border-bottom:1px solid var(--line)}
-.services ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
-.services li{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px;font-size:13px;font-weight:600;text-align:center;border-right:1px solid var(--line);transition:background .3s}
-.services li:nth-child(4n){border-right:0}
-.services li:hover{background:var(--sand)}
+.cons__top{display:grid;grid-template-columns:1fr 840px;gap:80px;align-items:start}
+.cons__cta{margin-top:40px}
+.cons__cta-m{display:none}
+.points{display:grid;grid-template-columns:1fr 1fr;gap:56px 64px;margin-top:20px}
+.points>div{display:flex;gap:28px}
+.points b{font-size:14px;font-weight:600;padding-top:7px}
+.points h4{font-size:22px;font-weight:600;margin-bottom:12px}
+.points p{font-size:14px;opacity:.7;max-width:340px}
+.services{margin-top:120px}
+.services h5{display:flex;align-items:center;gap:32px;font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+.services h5::before,.services h5::after{content:'';flex:1;height:1px;background:var(--line);opacity:.35}
+.services ul{list-style:none;display:grid;grid-template-columns:repeat(7,1fr);margin-top:56px}
+.services li{display:flex;flex-direction:column;align-items:center;gap:22px;padding:4px 8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-align:center;border-right:1px solid rgba(59,47,38,.18)}
+.services li:last-child{border-right:0}
 .services li img{width:48px;height:48px;transition:transform .3s var(--ease)}
 .services li:hover img{transform:translateY(-3px)}
-.services .partner{font-size:14px;margin:24px 0}
+.services li .sm{display:none}
+.services .partner{display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;opacity:.8;margin-top:72px}
+.services .partner::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--obsidian)}
 
 /* Booking CTA */
 .cta{padding:80px 0}
@@ -170,7 +176,8 @@ button,input{font:inherit;color:inherit}
 /* Footer */
 .footer{position:relative;background:var(--sand);padding:120px 0 48px;margin-top:60px}
 .footer .wave.top{top:-59px;height:60px}
-.footer__top{display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap}
+.footer__top{display:flex;justify-content:space-between;align-items:flex-start;gap:60px;flex-wrap:wrap}
+.footer__top .support{margin-left:auto;margin-right:24px}
 .footer__slogan{font-size:clamp(38px,3.9vw,56px);font-weight:300;line-height:1.2}
 .support{display:flex;gap:96px;align-items:flex-start}
 .support .eyebrow{font-size:11px;letter-spacing:.24em;opacity:.8}
@@ -184,7 +191,7 @@ button,input{font:inherit;color:inherit}
 .footer__bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);margin-top:64px;padding-top:28px;gap:24px;flex-wrap:wrap}
 .footer__bottom img{height:30px;width:auto}
 .footer__links{display:flex;gap:36px;font-size:13px;font-weight:600}
-.to-top{width:72px;height:72px;border-radius:50%;border:1.5px solid var(--obsidian);display:grid;place-items:center;font-size:24px;font-weight:600;transition:background .3s}
+.to-top{flex-shrink:0;width:72px;height:72px;border-radius:50%;border:1.5px solid var(--yellow);color:var(--obsidian);display:grid;place-items:center;font-size:24px;font-weight:600;transition:background .3s}
 .to-top:hover{background:var(--yellow);border-color:var(--yellow)}
 
 /* Sticky mobile bar */
@@ -197,7 +204,8 @@ button,input{font:inherit;color:inherit}
 
 /* ---------- Tablet ---------- */
 @media (max-width:1200px){
-  .members__grid,.contact__grid,.cons__grid{grid-template-columns:1fr;gap:56px}
+  .members__grid,.contact__grid,.cons__top{grid-template-columns:1fr;gap:56px}
+  .services{margin-top:80px}
   .hotels{grid-template-columns:repeat(2,1fr)}
   .cta__mascot{width:340px;right:40px}
 }
@@ -238,20 +246,41 @@ button,input{font:inherit;color:inherit}
   .acc__img{width:100%}
   .contact{padding:80px 0}
   .why__intro{padding-top:80px;padding-bottom:40px}
-  .band{min-height:0;display:block;background-size:0}
-  .band::before{content:'';display:block;aspect-ratio:4/3;background:inherit;background-size:cover;background-position:center}
+  .band{min-height:0;display:block;background:none!important;padding:0 20px}
+  .band::before{content:'';display:block;aspect-ratio:16/9;border-radius:16px;background-size:cover;background-position:center}
+  .band--space::before{background-image:url(assets/why/01-space-imamiya-interior.jpg)}
+  .band--city::before{background-image:url(assets/why/02-city-dotonbori-rooftop.jpg)}
+  .band--tech::before{background-image:url(assets/why/03-tech-imamiya-lobby.jpg)}
   .band .wrap{padding:0}
-  .band__card{border-radius:0;padding:36px 20px 56px;background:var(--bg);max-width:none}
-  .band__num{font-size:64px}
-  .band h3{font-size:30px}
+  .band__card{border-radius:0;padding:24px 0 56px;background:none;max-width:none}
+  .band__num{font-size:56px}
+  .band h3{font-size:28px;margin:6px 0 12px}
   .band .tagline{font-size:17px}
-  .points{grid-template-columns:1fr;gap:32px;margin-top:40px}
-  .services ul{grid-template-columns:repeat(2,1fr)}
-  .services li:nth-child(4n){border-right:1px solid var(--line)}
-  .services li:nth-child(2n){border-right:0}
-  .cta{padding:40px 0}
-  .cta__box{padding:44px 24px 220px;border-radius:24px}
-  .cta__mascot{width:280px;right:50%;transform:translateX(50%);bottom:24px;animation:none}
+  .band p.body{display:none}
+  .dots{display:block;margin:12px 0 24px;font-size:14px;font-weight:400;opacity:.75;line-height:1.7}
+  .dots li{display:inline}
+  .dots li::before{display:none}
+  .dots li+li::before{content:' · ';display:inline;width:auto;height:auto;background:none}
+  .points{grid-template-columns:1fr;gap:24px;margin-top:8px}
+  .points>div{gap:14px}
+  .points b{padding-top:4px}
+  .points h4{font-size:18px;margin-bottom:6px}
+  .points p{font-size:14px}
+  .cons__cta{display:none}
+  .services{margin-top:36px}
+  .services h5,.services .partner{display:none}
+  .services ul{grid-template-columns:repeat(4,1fr);gap:28px 4px;margin-top:0}
+  .services li{border:0;gap:12px;padding:0;font-size:12px}
+  .services li img{width:30px;height:30px}
+  .services li .lg{display:none}
+  .services li .sm{display:inline}
+  .cons__cta-m{display:flex;justify-content:center;width:100%;margin-top:36px}
+  .cta{padding:120px 0 40px}
+  .cta__box{padding:44px 24px 32px;border-radius:24px;overflow:visible;min-height:0}
+  .cta__mascot{width:220px;right:20px;top:-92px;bottom:auto;animation:none}
+  .cta__box h2{font-size:30px}
+  .cta__btns{flex-direction:column}
+  .cta__btns .btn{justify-content:center}
   .footer{padding:64px 0 120px;margin-top:0}
   .footer__top{flex-direction:column;gap:40px}
   .support{flex-direction:column;gap:40px}
@@ -260,7 +289,8 @@ button,input{font:inherit;color:inherit}
   .qr img{width:96px;height:96px}
   .header .logo img{height:26px}
   .footer__links{gap:20px;flex-wrap:wrap}
-  .to-top{width:56px;height:56px;font-size:20px}
+  .to-top{display:none}
+  .footer__top .support{margin:0}
   .sticky-book{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:var(--obsidian);color:var(--ivory);border-radius:999px;padding:10px 10px 10px 22px;align-items:center;justify-content:space-between;box-shadow:0 12px 30px rgba(45,41,38,.25);transform:translateY(140%);transition:transform .4s var(--ease)}
   .sticky-book.show{transform:none}
   .sticky-book span{font-size:13px;font-weight:600}
