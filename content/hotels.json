@@ -1,0 +1,114 @@
+[
+  {
+    "id": "tokyo",
+    "name": "Tokyo",
+    "all_url": "",
+    "hotels": [
+      {
+        "name": "Ueno",
+        "location": "Higashi-Ueno, Taito-ku, Tokyo",
+        "address": "5-5-22-4 Higashi-Ueno, Taito-ku, Tokyo 110-0015",
+        "image": "assets/hotels/tokyo/ueno.jpg",
+        "url": "https://www.booking.com/hotel/jp/minn-higashi-ueno.html"
+      }
+    ]
+  },
+  {
+    "id": "osaka",
+    "name": "Osaka",
+    "all_url": "",
+    "hotels": [
+      {
+        "name": "Dotonbori",
+        "location": "Kozu, Chuo-ku, Osaka",
+        "address": "2-6-17 Kozu, Chuo-ku, Osaka 542-0072",
+        "image": "assets/hotels/osaka/dotonbori.jpg",
+        "url": "https://www.booking.com/hotel/jp/ostay-dotonbori-east-apartment.html"
+      },
+      {
+        "name": "Imamiya",
+        "location": "Naniwa-higashi, Naniwa-ku, Osaka",
+        "address": "3-7-12 Naniwa-higashi, Naniwa-ku, Osaka 556-0025",
+        "image": "assets/hotels/osaka/imamiya.jpg",
+        "url": "https://www.booking.com/hotel/jp/vermillion.html"
+      },
+      {
+        "name": "Shin-Osaka",
+        "location": "Higashi-Nakajima, Higashiyodogawa-ku, Osaka",
+        "address": "1-18-32 Higashi-Nakajima, Higashiyodogawa-ku, Osaka 533-0033",
+        "image": "assets/hotels/osaka/shin-osaka.jpg",
+        "url": "https://www.booking.com/hotel/jp/ostay-shin-osaka-apartment.html"
+      },
+      {
+        "name": "Kitahama",
+        "location": "Kitahama, Chuo-ku, Osaka",
+        "address": "2-4-12 Kitahama, Chuo-ku, Osaka 541-0041",
+        "image": "assets/hotels/osaka/kitahama.jpg",
+        "url": "https://www.booking.com/hotel/jp/ostay-kitahama-apartment.html"
+      },
+      {
+        "name": "Ebisu",
+        "location": "Ebisu-higashi, Naniwa-ku, Osaka",
+        "address": "1-12-11 Ebisu-higashi, Naniwa-ku, Osaka 556-0002",
+        "image": "assets/hotels/osaka/ebisu.jpg",
+        "url": "https://www.booking.com/hotel/jp/ostay-namba-ebisu.html"
+      },
+      {
+        "name": "Namba South",
+        "location": "Nipponbashi-nishi, Naniwa-ku, Osaka",
+        "address": "1-8-21 Nipponbashi-nishi, Naniwa-ku, Osaka 556-0004",
+        "image": "assets/hotels/osaka/namba-south.jpg",
+        "url": "https://www.booking.com/hotel/jp/ostay-namba-south.html"
+      },
+      {
+        "name": "Kita-Horie",
+        "location": "Kita-Horie, Nishi-ku, Osaka",
+        "address": "2-6-12 Kita-Horie, Nishi-ku, Osaka 550-0014",
+        "image": "assets/hotels/osaka/kita-horie.jpg",
+        "url": "https://www.booking.com/hotel/jp/south-east-inn-da-ban-shi.html"
+      }
+    ]
+  },
+  {
+    "id": "kyoto",
+    "name": "Kyoto",
+    "all_url": "",
+    "hotels": [
+      {
+        "name": "Nishikujo",
+        "location": "Nishikujo, Minami-ku, Kyoto",
+        "address": "35 Nishikujo Yokocho, Minami-ku, Kyoto 601-8427",
+        "image": "assets/hotels/kyoto/nishikujo.jpg",
+        "url": "https://www.booking.com/hotel/jp/the-plun-residence-kyoto-s.html"
+      }
+    ]
+  },
+  {
+    "id": "bangkok",
+    "name": "Bangkok",
+    "all_url": "",
+    "hotels": [
+      {
+        "name": "Siamese Exclusive Queens",
+        "location": "Khlong Toei, Bangkok",
+        "address": "388 Soi Phai Sing To, Khlong Toei, Bangkok 10110",
+        "image": "assets/hotels/bangkok/siamese-exclusive-queens.jpg",
+        "url": "https://www.booking.com/hotel/th/new-family-suite-near-asok-and-queen-sirikit-center.html"
+      }
+    ]
+  },
+  {
+    "id": "phuket",
+    "name": "Phuket",
+    "all_url": "",
+    "hotels": [
+      {
+        "name": "Utopia Karon",
+        "location": "Karon, Mueang Phuket, Phuket",
+        "address": "8/99 Soi 14, Karon, Mueang Phuket, Phuket 83100",
+        "image": "assets/hotels/phuket/utopia-karon.jpg",
+        "url": "https://www.booking.com/hotel/th/karon-utopia.html"
+      }
+    ]
+  }
+]

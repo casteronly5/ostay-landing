@@ -1,0 +1,186 @@
+{
+  "booking_url": "https://www.booking.com/",
+  "formspree_id": "",
+  "default_city": "osaka",
+  "hero": {
+    "eyebrow": "Residential stays · Japan & Asia",
+    "title": "Stay Simple.\nStay Curious.",
+    "subtitle": "Borderless peace of mind for a journey that is truly yours.",
+    "image": "assets/hero/dotonbori-rooftop.jpg"
+  },
+  "destinations": {
+    "eyebrow": "01 · Destinations",
+    "title": "Where will your next\neveryday be?",
+    "lead": "Five cities, hand-picked homes. Choose a city to see our stays — each one books directly on Booking.com."
+  },
+  "members": {
+    "eyebrow": "02 · OSTAY Members",
+    "title": "Stay more.\nGet more.",
+    "lead": "Membership is complimentary for every OSTAY guest — and it pays off from your very first stay: a concierge on call, a stocked pantry, a fresh room and a night to share.",
+    "benefits": [
+      {
+        "label": "01 · Daily concierge",
+        "title": "A local friend on call,\nevery day of your trip.",
+        "body": "9:00–22:00 daily. Check-in help, car arrangements, luggage delivery and ticket booking. Babysitting coming soon.",
+        "tags": [
+          "All members",
+          "Every day"
+        ],
+        "image": "assets/members/01-concierge.jpg"
+      },
+      {
+        "label": "02 · Local pantry",
+        "title": "Arrive to a stocked kitchen,\nnot an empty fridge.",
+        "body": "A complimentary selection of local snacks and ingredients, waiting in your room on arrival.",
+        "tags": [
+          "Once per member",
+          "Up to 4 guests"
+        ],
+        "image": "assets/members/02-local-pantry.jpg"
+      },
+      {
+        "label": "03 · Mid-stay clean",
+        "title": "Fresh sheets halfway through —\non the house.",
+        "body": "One free room clean in the middle of your stay, so day five feels like day one.",
+        "tags": [
+          "Stays of 3+ nights",
+          "Once per member"
+        ],
+        "image": "assets/members/03-mid-stay-clean.jpg"
+      },
+      {
+        "label": "04 · Refer a friend",
+        "title": "Bring a friend.\nEarn a free night.",
+        "body": "When a friend you refer books 5 nights or more, you receive a voucher for one free night.",
+        "tags": [
+          "Friend books 5+ nights",
+          "Once per member"
+        ],
+        "image": "assets/members/04-refer-a-friend.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "03 · Say hello",
+    "title": "Let’s find your\nnext journey together.",
+    "lead": "Questions about stays or long-term options? We’d love to hear from you."
+  },
+  "why": {
+    "eyebrow": "04 · Why OSTAY",
+    "title": "Three reasons to stay like a local.",
+    "items": [
+      {
+        "label": "Space",
+        "title": "Room to Breathe",
+        "tagline": "Generous space that gives your mind room, too.",
+        "body": "Layouts with a place for everyone, even for a family of four — room for kids at play and for grown-ups unwinding on the sofa.",
+        "bullets": [
+          "Living & dining for the whole family",
+          "A kitchen of your own",
+          "Short or long stays"
+        ],
+        "button": "Find a spacious stay",
+        "image": "assets/why/01-space-imamiya-interior.jpg"
+      },
+      {
+        "label": "City connection",
+        "title": "In the Heart of the City",
+        "tagline": "A base connected to the pulse of the city.",
+        "body": "Step outside into the lively heart of town. Shop the markets, eat your way through the streets, and never worry about the way home.",
+        "bullets": [
+          "Near stations & downtown",
+          "Local markets & street food",
+          "Easy evening walks"
+        ],
+        "button": "Find a city-centre stay",
+        "image": "assets/why/02-city-dotonbori-rooftop.jpg"
+      },
+      {
+        "label": "Smart check-in",
+        "title": "Seamless Technology",
+        "tagline": "Invisible intelligence, seamless experience.",
+        "body": "Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? We’re online anytime.",
+        "bullets": [
+          "Self check-in by smart lock",
+          "Contact-free entry",
+          "Online support, anytime"
+        ],
+        "button": "How smart check-in works",
+        "image": "assets/why/03-tech-imamiya-lobby.jpg"
+      }
+    ]
+  },
+  "concierge": {
+    "eyebrow": "05 · Concierge",
+    "title": "Free to explore.\nSafe to return.",
+    "points": [
+      {
+        "title": "24/7 online support",
+        "body": "Whenever you need help on your trip, reach us online anytime."
+      },
+      {
+        "title": "Safe, secure stays",
+        "body": "We only feature residential hotels designed with security in mind."
+      },
+      {
+        "title": "Home-like comfort",
+        "body": "Everything you need for daily life, from short trips to long stays."
+      },
+      {
+        "title": "Guest relations",
+        "body": "From booking to check-out, we keep your journey running smoothly."
+      }
+    ],
+    "partner": "We partner with trusted locals to make every stay safe and special."
+  },
+  "cta": {
+    "eyebrow": "Book your stay",
+    "title": "Your next everyday\nstarts here.",
+    "lead": "Five cities. Hand-picked homes. Booked in a few clicks."
+  },
+  "footer": {
+    "slogan": "Stay Simple.\nStay Curious.",
+    "contacts": [
+      {
+        "label": "Emergency",
+        "value": "03 4588 3364",
+        "link": "tel:+81345883364"
+      },
+      {
+        "label": "Email",
+        "value": "vip@ostay.net",
+        "link": "mailto:vip@ostay.net"
+      },
+      {
+        "label": "WhatsApp",
+        "value": "+81 8067467880",
+        "link": "https://wa.me/818067467880"
+      },
+      {
+        "label": "LINE ID",
+        "value": "18918689798",
+        "link": ""
+      },
+      {
+        "label": "WeCom",
+        "value": "18918689798",
+        "link": ""
+      }
+    ],
+    "qr_codes": [
+      {
+        "label": "LINE",
+        "image": "assets/qr/line.png"
+      },
+      {
+        "label": "WhatsApp",
+        "image": "assets/qr/whatsapp.png"
+      },
+      {
+        "label": "WeChat",
+        "image": "assets/qr/wechat.png"
+      }
+    ],
+    "privacy_url": ""
+  }
+}

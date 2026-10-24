@@ -36,12 +36,12 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero__bg" role="img" aria-label="A spacious OSTAY living room with a view of Mt. Fuji"></div>
+  <div class="hero__bg" data-bg="hero.image" style="--img:url(assets/hero/dotonbori-rooftop.jpg)" role="img" aria-label="A spacious OSTAY living room with a view of Mt. Fuji"></div>
   <div class="wrap">
     <div class="hero__panel reveal">
-      <p class="eyebrow">Residential stays · Japan &amp; Asia</p>
-      <h1>Stay Simple.<br>Stay Curious.</h1>
-      <p class="sub">Borderless peace of mind for a journey that is truly yours.</p>
+      <p class="eyebrow" data-t="hero.eyebrow">Residential stays · Japan &amp; Asia</p>
+      <h1 data-t="hero.title">Stay Simple.<br>Stay Curious.</h1>
+      <p class="sub" data-t="hero.subtitle">Borderless peace of mind for a journey that is truly yours.</p>
       <div class="hero__ctas">
         <a class="btn btn--yellow" data-booking="main" href="#" target="_blank" rel="noopener">Book your stay <span class="arr ext">↗</span></a>
         <a class="link" href="#why">Why OSTAY <span>↓</span></a>
@@ -58,10 +58,10 @@
   <div class="wrap">
     <div class="dest__head reveal">
       <div>
-        <p class="eyebrow">01 · Destinations</p>
-        <h2 class="h2">Where will your next<br>everyday be?</h2>
+        <p class="eyebrow" data-t="destinations.eyebrow">01 · Destinations</p>
+        <h2 class="h2" data-t="destinations.title">Where will your next<br>everyday be?</h2>
       </div>
-      <p class="lead">Five cities, hand-picked homes. Choose a city to see our stays — each one books directly on Booking.com.</p>
+      <p class="lead" data-t="destinations.lead">Five cities, hand-picked homes. Choose a city to see our stays — each one books directly on Booking.com.</p>
     </div>
     <div class="tabs reveal" role="tablist" id="cityTabs"></div>
     <div class="dest__meta">
@@ -79,9 +79,9 @@
   <svg class="wave top" viewBox="0 0 1800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C400 0 800 0 1100 25 S1600 60 1800 20 V60 H0Z" fill="#EFE4D2"/></svg>
   <div class="wrap members__grid">
     <div class="reveal">
-      <p class="eyebrow">02 · OSTAY Members</p>
-      <h2 class="h2" style="font-size:clamp(40px,4.4vw,64px)">Stay more.<br>Get more.</h2>
-      <p class="lead" style="font-size:17px">Membership is complimentary for every OSTAY guest — and it pays off from your very first stay: a concierge on call, a stocked pantry, a fresh room and a night to share.</p>
+      <p class="eyebrow" data-t="members.eyebrow">02 · OSTAY Members</p>
+      <h2 class="h2" data-t="members.title" style="font-size:clamp(40px,4.4vw,64px)">Stay more.<br>Get more.</h2>
+      <p class="lead" data-t="members.lead" style="font-size:17px">Membership is complimentary for every OSTAY guest — and it pays off from your very first stay: a concierge on call, a stocked pantry, a fresh room and a night to share.</p>
       <div class="member-card" id="memberCard">
         <i class="ring r1"></i><i class="ring r2"></i>
         <img src="assets/brand/ostay-logo.png" alt="OSTAY">
@@ -91,55 +91,55 @@
     <div class="acc reveal" id="acc">
       <div class="acc__item open">
         <button class="acc__btn" aria-expanded="true">
-          <span class="acc__num">01 · Daily concierge</span>
-          <span class="acc__title">A local friend on call,<br> every day of your trip.</span>
+          <span class="acc__num" data-t="members.benefits.0.label">01 · Daily concierge</span>
+          <span class="acc__title" data-t="members.benefits.0.title">A local friend on call,<br> every day of your trip.</span>
           <span class="acc__icon">–</span>
         </button>
         <div class="acc__panel"><div><div class="acc__content">
           <div>
-            <p>9:00–22:00 daily. Check-in help, car arrangements, luggage delivery and ticket booking. Babysitting coming soon.</p>
-            <div class="hotel__tags"><span class="tag">All members</span><span class="tag">Every day</span></div>
+            <p data-t="members.benefits.0.body">9:00–22:00 daily. Check-in help, car arrangements, luggage delivery and ticket booking. Babysitting coming soon.</p>
+            <div class="hotel__tags" data-tags="members.benefits.0.tags"><span class="tag">All members</span><span class="tag">Every day</span></div>
           </div>
-          <img class="acc__img" src="assets/members/01-concierge.jpg" alt="" loading="lazy">
+          <img class="acc__img" data-src="members.benefits.0.image" src="assets/members/01-concierge.jpg" alt="" loading="lazy">
         </div></div></div>
       </div>
       <div class="acc__item">
         <button class="acc__btn" aria-expanded="false">
-          <span class="acc__num">02 · Local pantry</span>
-          <span class="acc__title">Arrive to a stocked kitchen,<br> not an empty fridge.</span>
+          <span class="acc__num" data-t="members.benefits.1.label">02 · Local pantry</span>
+          <span class="acc__title" data-t="members.benefits.1.title">Arrive to a stocked kitchen,<br> not an empty fridge.</span>
           <span class="acc__icon">+</span>
         </button>
         <div class="acc__panel"><div><div class="acc__content"><div>
-          <p>A complimentary selection of local snacks and ingredients, waiting in your room on arrival.</p>
-          <div class="hotel__tags"><span class="tag">Once per member</span><span class="tag">Up to 4 guests</span></div>
+          <p data-t="members.benefits.1.body">A complimentary selection of local snacks and ingredients, waiting in your room on arrival.</p>
+          <div class="hotel__tags" data-tags="members.benefits.1.tags"><span class="tag">Once per member</span><span class="tag">Up to 4 guests</span></div>
         </div>
-          <img class="acc__img" src="assets/members/02-local-pantry.jpg" alt="" loading="lazy">
+          <img class="acc__img" data-src="members.benefits.1.image" src="assets/members/02-local-pantry.jpg" alt="" loading="lazy">
         </div></div></div>
       </div>
       <div class="acc__item">
         <button class="acc__btn" aria-expanded="false">
-          <span class="acc__num">03 · Mid-stay clean</span>
-          <span class="acc__title">Fresh sheets halfway through —<br> on the house.</span>
+          <span class="acc__num" data-t="members.benefits.2.label">03 · Mid-stay clean</span>
+          <span class="acc__title" data-t="members.benefits.2.title">Fresh sheets halfway through —<br> on the house.</span>
           <span class="acc__icon">+</span>
         </button>
         <div class="acc__panel"><div><div class="acc__content"><div>
-          <p>One free room clean in the middle of your stay, so day five feels like day one.</p>
-          <div class="hotel__tags"><span class="tag">Stays of 3+ nights</span><span class="tag">Once per member</span></div>
+          <p data-t="members.benefits.2.body">One free room clean in the middle of your stay, so day five feels like day one.</p>
+          <div class="hotel__tags" data-tags="members.benefits.2.tags"><span class="tag">Stays of 3+ nights</span><span class="tag">Once per member</span></div>
         </div>
-          <img class="acc__img" src="assets/members/03-mid-stay-clean.jpg" alt="" loading="lazy">
+          <img class="acc__img" data-src="members.benefits.2.image" src="assets/members/03-mid-stay-clean.jpg" alt="" loading="lazy">
         </div></div></div>
       </div>
       <div class="acc__item">
         <button class="acc__btn" aria-expanded="false">
-          <span class="acc__num">04 · Refer a friend</span>
-          <span class="acc__title">Bring a friend.<br> Earn a free night.</span>
+          <span class="acc__num" data-t="members.benefits.3.label">04 · Refer a friend</span>
+          <span class="acc__title" data-t="members.benefits.3.title">Bring a friend.<br> Earn a free night.</span>
           <span class="acc__icon">+</span>
         </button>
         <div class="acc__panel"><div><div class="acc__content"><div>
-          <p>When a friend you refer books 5 nights or more, you receive a voucher for one free night.</p>
-          <div class="hotel__tags"><span class="tag">Friend books 5+ nights</span><span class="tag">Once per member</span></div>
+          <p data-t="members.benefits.3.body">When a friend you refer books 5 nights or more, you receive a voucher for one free night.</p>
+          <div class="hotel__tags" data-tags="members.benefits.3.tags"><span class="tag">Friend books 5+ nights</span><span class="tag">Once per member</span></div>
         </div>
-          <img class="acc__img" src="assets/members/04-refer-a-friend.jpg" alt="" loading="lazy">
+          <img class="acc__img" data-src="members.benefits.3.image" src="assets/members/04-refer-a-friend.jpg" alt="" loading="lazy">
         </div></div></div>
       </div>
     </div>
@@ -151,9 +151,9 @@
 <section class="contact" id="contact">
   <div class="wrap contact__grid">
     <div class="reveal">
-      <p class="eyebrow">03 · Say hello</p>
-      <h2 class="h2">Let’s find your<br>next journey together.</h2>
-      <p class="lead">Questions about stays or long-term options? We’d love to hear from you.</p>
+      <p class="eyebrow" data-t="contact.eyebrow">03 · Say hello</p>
+      <h2 class="h2" data-t="contact.title">Let’s find your<br>next journey together.</h2>
+      <p class="lead" data-t="contact.lead">Questions about stays or long-term options? We’d love to hear from you.</p>
     </div>
     <!-- Replace YOUR_FORM_ID with your Formspree form ID (https://formspree.io) -->
     <form class="form reveal" id="helloForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -169,43 +169,43 @@
 <!-- 04 Why OSTAY -->
 <section id="why">
   <div class="wrap why__intro reveal">
-    <p class="eyebrow">04 · Why OSTAY</p>
-    <h2 class="h2">Three reasons to stay like a local.</h2>
+    <p class="eyebrow" data-t="why.eyebrow">04 · Why OSTAY</p>
+    <h2 class="h2" data-t="why.title">Three reasons to stay like a local.</h2>
   </div>
 
-  <div class="band band--space">
+  <div class="band band--space" data-bg="why.items.0.image" style="--img:url(assets/why/01-space-imamiya-interior.jpg)">
     <div class="wrap"><div class="band__card reveal">
       <div class="band__num">01</div>
-      <p class="eyebrow" style="margin-top:16px">Space</p>
-      <h3>Room to Breathe</h3>
-      <p class="tagline">Generous space that gives your mind room, too.</p>
-      <p class="body">Layouts with a place for everyone, even for a family of four — room for kids at play and for grown-ups unwinding on the sofa.</p>
-      <ul class="dots"><li>Living &amp; dining for the whole family</li><li>A kitchen of your own</li><li>Short or long stays</li></ul>
-      <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener">Find a spacious stay <span class="arr ext">↗</span></a>
+      <p class="eyebrow" data-t="why.items.0.label" style="margin-top:16px">Space</p>
+      <h3 data-t="why.items.0.title">Room to Breathe</h3>
+      <p class="tagline" data-t="why.items.0.tagline">Generous space that gives your mind room, too.</p>
+      <p class="body" data-t="why.items.0.body">Layouts with a place for everyone, even for a family of four — room for kids at play and for grown-ups unwinding on the sofa.</p>
+      <ul class="dots" data-li="why.items.0.bullets"><li>Living &amp; dining for the whole family</li><li>A kitchen of your own</li><li>Short or long stays</li></ul>
+      <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener"><span data-t="why.items.0.button">Find a spacious stay</span> <span class="arr ext">↗</span></a>
     </div></div>
   </div>
 
-  <div class="band band--city band--right">
+  <div class="band band--city band--right" data-bg="why.items.1.image" style="--img:url(assets/why/02-city-dotonbori-rooftop.jpg)">
     <div class="wrap"><div class="band__card reveal">
       <div class="band__num">02</div>
-      <p class="eyebrow" style="margin-top:16px">City connection</p>
-      <h3>In the Heart of the City</h3>
-      <p class="tagline">A base connected to the pulse of the city.</p>
-      <p class="body">Step outside into the lively heart of town. Shop the markets, eat your way through the streets, and never worry about the way home.</p>
-      <ul class="dots"><li>Near stations &amp; downtown</li><li>Local markets &amp; street food</li><li>Easy evening walks</li></ul>
-      <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener">Find a city-centre stay <span class="arr ext">↗</span></a>
+      <p class="eyebrow" data-t="why.items.1.label" style="margin-top:16px">City connection</p>
+      <h3 data-t="why.items.1.title">In the Heart of the City</h3>
+      <p class="tagline" data-t="why.items.1.tagline">A base connected to the pulse of the city.</p>
+      <p class="body" data-t="why.items.1.body">Step outside into the lively heart of town. Shop the markets, eat your way through the streets, and never worry about the way home.</p>
+      <ul class="dots" data-li="why.items.1.bullets"><li>Near stations &amp; downtown</li><li>Local markets &amp; street food</li><li>Easy evening walks</li></ul>
+      <a class="btn btn--yellow btn--sm" data-booking="main" href="#" target="_blank" rel="noopener"><span data-t="why.items.1.button">Find a city-centre stay</span> <span class="arr ext">↗</span></a>
     </div></div>
   </div>
 
-  <div class="band band--tech">
+  <div class="band band--tech" data-bg="why.items.2.image" style="--img:url(assets/why/03-tech-imamiya-lobby.jpg)">
     <div class="wrap"><div class="band__card reveal">
       <div class="band__num">03</div>
-      <p class="eyebrow" style="margin-top:16px">Smart check-in</p>
-      <h3>Seamless Technology</h3>
-      <p class="tagline">Invisible intelligence, seamless experience.</p>
-      <p class="body">Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? We’re online anytime.</p>
-      <ul class="dots"><li>Self check-in by smart lock</li><li>Contact-free entry</li><li>Online support, anytime</li></ul>
-      <a class="btn btn--yellow btn--sm" href="#concierge">How smart check-in works <span class="arr fwd">→</span></a>
+      <p class="eyebrow" data-t="why.items.2.label" style="margin-top:16px">Smart check-in</p>
+      <h3 data-t="why.items.2.title">Seamless Technology</h3>
+      <p class="tagline" data-t="why.items.2.tagline">Invisible intelligence, seamless experience.</p>
+      <p class="body" data-t="why.items.2.body">Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? We’re online anytime.</p>
+      <ul class="dots" data-li="why.items.2.bullets"><li>Self check-in by smart lock</li><li>Contact-free entry</li><li>Online support, anytime</li></ul>
+      <a class="btn btn--yellow btn--sm" href="#concierge"><span data-t="why.items.2.button">How smart check-in works</span> <span class="arr fwd">→</span></a>
     </div></div>
   </div>
 </section>
@@ -215,15 +215,15 @@
   <div class="wrap">
     <div class="cons__top">
       <div class="cons__head reveal">
-        <p class="eyebrow">05 · Concierge</p>
-        <h2 class="h2">Free to explore.<br>Safe to return.</h2>
+        <p class="eyebrow" data-t="concierge.eyebrow">05 · Concierge</p>
+        <h2 class="h2" data-t="concierge.title">Free to explore.<br>Safe to return.</h2>
         <a class="btn btn--ghost btn--sm cons__cta" href="#contact">Ask our concierge <span class="arr fwd">→</span></a>
       </div>
       <div class="points reveal">
-        <div><b>01</b><div><h4>24/7 online support</h4><p>Whenever you need help on your trip, reach us online anytime.</p></div></div>
-        <div><b>02</b><div><h4>Safe, secure stays</h4><p>We only feature residential hotels designed with security in mind.</p></div></div>
-        <div><b>03</b><div><h4>Home-like comfort</h4><p>Everything you need for daily life, from short trips to long stays.</p></div></div>
-        <div><b>04</b><div><h4>Guest relations</h4><p>From booking to check-out, we keep your journey running smoothly.</p></div></div>
+        <div><b>01</b><div><h4 data-t="concierge.points.0.title">24/7 online support</h4><p data-t="concierge.points.0.body">Whenever you need help on your trip, reach us online anytime.</p></div></div>
+        <div><b>02</b><div><h4 data-t="concierge.points.1.title">Safe, secure stays</h4><p data-t="concierge.points.1.body">We only feature residential hotels designed with security in mind.</p></div></div>
+        <div><b>03</b><div><h4 data-t="concierge.points.2.title">Home-like comfort</h4><p data-t="concierge.points.2.body">Everything you need for daily life, from short trips to long stays.</p></div></div>
+        <div><b>04</b><div><h4 data-t="concierge.points.3.title">Guest relations</h4><p data-t="concierge.points.3.body">From booking to check-out, we keep your journey running smoothly.</p></div></div>
       </div>
     </div>
     <div class="services reveal">
@@ -237,7 +237,7 @@
         <li><img src="assets/icons/laundry.svg" alt=""><span class="lg">Laundry</span><span class="sm">Laundry</span></li>
         <li><img src="assets/icons/support.svg" alt=""><span class="lg">24h support</span><span class="sm">24h support</span></li>
       </ul>
-      <p class="partner">We partner with trusted locals to make every stay safe and special.</p>
+      <p class="partner" data-t="concierge.partner">We partner with trusted locals to make every stay safe and special.</p>
       <a class="btn btn--ghost cons__cta-m" href="#contact">Ask our concierge <span class="arr fwd">→</span></a>
     </div>
   </div>
@@ -247,9 +247,9 @@
 <section class="cta">
   <div class="wrap">
     <div class="cta__box reveal">
-      <p class="eyebrow">Book your stay</p>
-      <h2>Your next everyday<br>starts here.</h2>
-      <p>Five cities. Hand-picked homes. Booked in a few clicks.</p>
+      <p class="eyebrow" data-t="cta.eyebrow">Book your stay</p>
+      <h2 data-t="cta.title">Your next everyday<br>starts here.</h2>
+      <p data-t="cta.lead">Five cities. Hand-picked homes. Booked in a few clicks.</p>
       <div class="cta__btns">
         <a class="btn btn--dark" data-booking="main" href="#" target="_blank" rel="noopener">Book your stay <span class="arr ext">↗</span></a>
         <a class="btn btn--ghost" href="#destinations">See all destinations <span class="arr down">↓</span></a>
@@ -267,11 +267,11 @@
   <svg class="wave top" viewBox="0 0 1800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 35 C350 0 750 10 1050 30 S1550 55 1800 25 V60 H0Z" fill="#EFE4D2"/></svg>
   <div class="wrap">
     <div class="footer__top">
-      <p class="footer__slogan">Stay Simple.<br>Stay Curious.</p>
+      <p class="footer__slogan" data-t="footer.slogan">Stay Simple.<br>Stay Curious.</p>
       <div class="support">
         <div class="support__col">
           <p class="eyebrow">Customer support</p>
-          <dl>
+          <dl id="contactList">
             <dt>Emergency</dt><dd><a href="tel:+81345883364">03 4588 3364</a></dd>
             <dt>Email</dt><dd><a href="mailto:vip@ostay.net">vip@ostay.net</a></dd>
             <dt>WhatsApp</dt><dd><a href="https://wa.me/818067467880" target="_blank" rel="noopener">+81 8067467880</a></dd>
@@ -281,7 +281,7 @@
         </div>
         <div class="support__col">
           <p class="eyebrow">Scan to chat</p>
-          <div class="qrs">
+          <div class="qrs" id="qrList">
             <figure class="qr"><img src="assets/qr/line.png" alt="LINE QR code" loading="lazy"><figcaption>LINE</figcaption></figure>
             <figure class="qr"><img src="assets/qr/whatsapp.png" alt="WhatsApp QR code" loading="lazy"><figcaption>WhatsApp</figcaption></figure>
             <figure class="qr"><img src="assets/qr/wechat.png" alt="WeChat QR code" loading="lazy"><figcaption>WeChat</figcaption></figure>
@@ -295,7 +295,7 @@
       <div class="footer__links">
         <a data-booking="main" href="#" target="_blank" rel="noopener">Official site ↗</a>
         <a href="#contact">Contact</a>
-        <a href="#">Privacy</a>
+        <a href="#" id="privacyLink">Privacy</a>
       </div>
     </div>
   </div>

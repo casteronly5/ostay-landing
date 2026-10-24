@@ -1,47 +1,35 @@
 /* ============================================================
-   OSTAY — site config
-   Edit the links and hotels below. Everything else is automatic.
+   OSTAY — content is managed in /content (site.json, hotels.json)
+   and edited through the Pages CMS admin. Everything below renders it.
    ============================================================ */
-const CONFIG = {
-  // Main "Book your stay ↗" link (official booking site)
-  bookingUrl: 'https://www.booking.com/',
+let CONFIG = { bookingUrl: 'https://www.booking.com/', cities: [], hotels: {}, defaultCity: 'osaka' };
+let SITE = null;
 
-  // City tabs (in order). `allUrl` is optional — leave '' to hide "View all … ↗".
-  cities: [
-    { id: 'tokyo',   name: 'Tokyo',   allUrl: '' },
-    { id: 'osaka',   name: 'Osaka',   allUrl: '' },
-    { id: 'kyoto',   name: 'Kyoto',   allUrl: '' },
-    { id: 'bangkok', name: 'Bangkok', allUrl: '' },
-    { id: 'phuket',  name: 'Phuket',  allUrl: '' },
-  ],
-  defaultCity: 'osaka',
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+const nl2br = s => esc(s).replace(/\n/g, '<br>');
+const get = (obj, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
+const asset = p => (p || '').replace(/^\//, '');
 
-  // Hotels per city — from 物业List.xlsx
-  // name / location (short, shown on card) / address (full, shown on hover) / tags (optional) / image / url
-  hotels: {
-    tokyo: [
-      { name: 'Ueno', location: 'Higashi-Ueno, Taito-ku, Tokyo', address: '5-5-22-4 Higashi-Ueno, Taito-ku, Tokyo 110-0015', image: 'assets/hotels/tokyo/ueno.jpg', url: 'https://www.booking.com/hotel/jp/minn-higashi-ueno.html' },
-    ],
-    osaka: [
-      { name: 'Dotonbori', location: 'Kozu, Chuo-ku, Osaka', address: '2-6-17 Kozu, Chuo-ku, Osaka 542-0072', image: 'assets/hotels/osaka/dotonbori.jpg', url: 'https://www.booking.com/hotel/jp/ostay-dotonbori-east-apartment.html' },
-      { name: 'Imamiya', location: 'Naniwa-higashi, Naniwa-ku, Osaka', address: '3-7-12 Naniwa-higashi, Naniwa-ku, Osaka 556-0025', image: 'assets/hotels/osaka/imamiya.jpg', url: 'https://www.booking.com/hotel/jp/vermillion.html' },
-      { name: 'Shin-Osaka', location: 'Higashi-Nakajima, Higashiyodogawa-ku, Osaka', address: '1-18-32 Higashi-Nakajima, Higashiyodogawa-ku, Osaka 533-0033', image: 'assets/hotels/osaka/shin-osaka.jpg', url: 'https://www.booking.com/hotel/jp/ostay-shin-osaka-apartment.html' },
-      { name: 'Kitahama', location: 'Kitahama, Chuo-ku, Osaka', address: '2-4-12 Kitahama, Chuo-ku, Osaka 541-0041', image: 'assets/hotels/osaka/kitahama.jpg', url: 'https://www.booking.com/hotel/jp/ostay-kitahama-apartment.html' },
-      { name: 'Ebisu', location: 'Ebisu-higashi, Naniwa-ku, Osaka', address: '1-12-11 Ebisu-higashi, Naniwa-ku, Osaka 556-0002', image: 'assets/hotels/osaka/ebisu.jpg', url: 'https://www.booking.com/hotel/jp/ostay-namba-ebisu.html' },
-      { name: 'Namba South', location: 'Nipponbashi-nishi, Naniwa-ku, Osaka', address: '1-8-21 Nipponbashi-nishi, Naniwa-ku, Osaka 556-0004', image: 'assets/hotels/osaka/namba-south.jpg', url: 'https://www.booking.com/hotel/jp/ostay-namba-south.html' },
-      { name: 'Kita-Horie', location: 'Kita-Horie, Nishi-ku, Osaka', address: '2-6-12 Kita-Horie, Nishi-ku, Osaka 550-0014', image: 'assets/hotels/osaka/kita-horie.jpg', url: 'https://www.booking.com/hotel/jp/south-east-inn-da-ban-shi.html' },
-    ],
-    kyoto: [
-      { name: 'Nishikujo', location: 'Nishikujo, Minami-ku, Kyoto', address: '35 Nishikujo Yokocho, Minami-ku, Kyoto 601-8427', image: 'assets/hotels/kyoto/nishikujo.jpg', url: 'https://www.booking.com/hotel/jp/the-plun-residence-kyoto-s.html' },
-    ],
-    bangkok: [
-      { name: 'Siamese Exclusive Queens', location: 'Khlong Toei, Bangkok', address: '388 Soi Phai Sing To, Khlong Toei, Bangkok 10110', image: 'assets/hotels/bangkok/siamese-exclusive-queens.jpg', url: 'https://www.booking.com/hotel/th/new-family-suite-near-asok-and-queen-sirikit-center.html' },
-    ],
-    phuket: [
-      { name: 'Utopia Karon', location: 'Karon, Mueang Phuket, Phuket', address: '8/99 Soi 14, Karon, Mueang Phuket, Phuket 83100', image: 'assets/hotels/phuket/utopia-karon.jpg', url: 'https://www.booking.com/hotel/th/karon-utopia.html' },
-    ],
-  },
-};
+function hydrate(site) {
+  document.querySelectorAll('[data-t]').forEach(el => { const v = get(site, el.dataset.t); if (typeof v === 'string' && v) el.innerHTML = nl2br(v); });
+  document.querySelectorAll('[data-src]').forEach(el => { const v = get(site, el.dataset.src); if (v) el.src = asset(v); });
+  document.querySelectorAll('[data-bg]').forEach(el => { const v = get(site, el.dataset.bg); if (v) el.style.setProperty('--img', `url("${asset(v)}")`); });
+  document.querySelectorAll('[data-tags]').forEach(el => { const v = get(site, el.dataset.tags); if (Array.isArray(v)) el.innerHTML = v.map(t => `<span class="tag">${esc(t)}</span>`).join(''); });
+  document.querySelectorAll('[data-li]').forEach(el => { const v = get(site, el.dataset.li); if (Array.isArray(v)) el.innerHTML = v.map(t => `<li>${esc(t)}</li>`).join(''); });
+  const f = site.footer || {};
+  if (Array.isArray(f.contacts)) document.getElementById('contactList').innerHTML = f.contacts.map(c => {
+    const ext = /^https?:/.test(c.link || '');
+    const val = c.link ? `<a href="${esc(c.link)}"${ext ? ' target="_blank" rel="noopener"' : ''}>${esc(c.value)}</a>` : esc(c.value);
+    return `<dt>${esc(c.label)}</dt><dd>${val}</dd>`;
+  }).join('');
+  if (Array.isArray(f.qr_codes)) document.getElementById('qrList').innerHTML = f.qr_codes.map(q =>
+    `<figure class="qr"><img src="${esc(asset(q.image))}" alt="${esc(q.label)} QR code" loading="lazy"><figcaption>${esc(q.label)}</figcaption></figure>`).join('');
+  const pv = document.getElementById('privacyLink'); if (f.privacy_url) pv.href = f.privacy_url;
+  if (site.formspree_id) document.getElementById('helloForm').action = 'https://formspree.io/f/' + site.formspree_id.trim();
+  if (site.booking_url) CONFIG.bookingUrl = site.booking_url;
+  if (site.default_city) CONFIG.defaultCity = site.default_city;
+  document.querySelectorAll('[data-booking="main"]').forEach(a => (a.href = CONFIG.bookingUrl));
+}
 
 /* ---------- Booking links ---------- */
 document.querySelectorAll('[data-booking="main"]').forEach(a => (a.href = CONFIG.bookingUrl));
@@ -80,15 +68,32 @@ function render(cityId) {
   updateCarousel();
 }
 
-tabsEl.innerHTML = CONFIG.cities.map(c => {
-  const n = CONFIG.hotels[c.id]?.length || 0;
-  return `<button class="tab" role="tab" data-city="${c.id}" aria-selected="false">${c.name} <small>${n}</small></button>`;
-}).join('');
+function buildTabs() {
+  tabsEl.innerHTML = CONFIG.cities.map(c => {
+    const n = CONFIG.hotels[c.id]?.length || 0;
+    return `<button class="tab" role="tab" data-city="${esc(c.id)}" aria-selected="false">${esc(c.name)} <small>${n}</small></button>`;
+  }).join('');
+  const start = CONFIG.cities.find(c => c.id === CONFIG.defaultCity) ? CONFIG.defaultCity : CONFIG.cities[0]?.id;
+  if (start) render(start);
+}
 tabsEl.addEventListener('click', e => {
   const t = e.target.closest('.tab');
   if (t) render(t.dataset.city);
 });
-render(CONFIG.defaultCity || CONFIG.cities[0].id);
+
+/* ---------- Load content ---------- */
+const slug = s => String(s || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+Promise.all([
+  fetch('content/site.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => null),
+  fetch('content/hotels.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => null),
+]).then(([site, cities]) => {
+  if (site) { SITE = site; hydrate(site); }
+  if (Array.isArray(cities)) {
+    CONFIG.cities = cities.map(c => ({ id: c.id || slug(c.name), name: c.name, allUrl: c.all_url || '' }));
+    CONFIG.hotels = Object.fromEntries(cities.map(c => [c.id || slug(c.name), (c.hotels || []).map(h => ({ ...h, image: asset(h.image) }))]));
+  }
+  buildTabs();
+});
 
 /* Mobile carousel counter */
 function updateCarousel() {
@@ -164,7 +169,7 @@ const statusEl = document.getElementById('formStatus');
 form.addEventListener('submit', async e => {
   e.preventDefault();
   if (form.action.includes('YOUR_FORM_ID')) {
-    statusEl.textContent = 'Form is not connected yet — add your Formspree ID in index.html.';
+    statusEl.textContent = 'Form is not connected yet — add the Formspree ID in the site settings.';
     return;
   }
   const btn = form.querySelector('button');
@@ -176,7 +181,7 @@ form.addEventListener('submit', async e => {
     form.reset();
     statusEl.textContent = 'Thank you! We’ll be in touch soon.';
   } catch {
-    statusEl.textContent = 'Something went wrong. Please email support@ostay.example.';
+    statusEl.textContent = 'Something went wrong. Please email vip@ostay.net.';
   } finally {
     btn.disabled = false;
   }

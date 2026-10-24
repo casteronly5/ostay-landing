@@ -1,0 +1,192 @@
+# Pages CMS configuration — https://pagescms.org
+# Log in at https://app.pagescms.org with a GitHub account that has access to this repo.
+
+media:
+  input: assets
+  output: assets
+  extensions: [jpg, jpeg, png, webp, svg]
+
+content:
+  # ---------------------------------------------------------------- Hotels
+  - name: hotels
+    label: Hotels（酒店）
+    type: file
+    path: content/hotels.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: City ID
+        type: string
+        description: Lowercase, no spaces (e.g. osaka). Used internally — keep it stable.
+        required: true
+      - name: name
+        label: City name
+        type: string
+        required: true
+      - name: all_url
+        label: "“View all stays” link (optional)"
+        type: string
+        description: Booking.com search page for this city. Leave empty to hide the link.
+      - name: hotels
+        label: Hotels in this city
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - { name: name, label: Hotel name, type: string, required: true }
+          - { name: location, label: Area (short), type: string, description: "e.g. Kozu, Chuo-ku, Osaka" }
+          - { name: address, label: Full address, type: string }
+          - { name: image, label: Photo, type: image, description: Landscape photo, about 1200px wide. }
+          - { name: url, label: Booking.com link, type: string, required: true }
+
+  # ---------------------------------------------------------------- Site content
+  - name: site
+    label: Page content（页面内容）
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: booking_url
+        label: Main booking link
+        type: string
+        description: Used by every “Book your stay ↗” button.
+      - name: formspree_id
+        label: Formspree form ID
+        type: string
+        description: The ID from formspree.io (the part after /f/). Leave empty until the form is set up.
+      - name: default_city
+        label: City shown first
+        type: string
+        description: City ID from the Hotels list (e.g. osaka).
+
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Headline, type: text, description: Press Enter for a line break. }
+          - { name: subtitle, label: Subtitle, type: text }
+          - { name: image, label: Background image, type: image }
+
+      - name: destinations
+        label: 01 · Destinations
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Title, type: text }
+          - { name: lead, label: Intro text, type: text }
+
+      - name: members
+        label: 02 · Members
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Title, type: text }
+          - { name: lead, label: Intro text, type: text }
+          - name: benefits
+            label: Benefits
+            type: object
+            list:
+              min: 4
+              max: 4
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - { name: label, label: Small label, type: string }
+              - { name: title, label: Title, type: text, description: Press Enter where the line should break. }
+              - { name: body, label: Description, type: text }
+              - { name: tags, label: Tags, type: string, list: true }
+              - { name: image, label: Image, type: image }
+
+      - name: contact
+        label: 03 · Say hello
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Title, type: text }
+          - { name: lead, label: Intro text, type: text }
+
+      - name: why
+        label: 04 · Why OSTAY
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Title, type: text }
+          - name: items
+            label: Reasons
+            type: object
+            list:
+              min: 3
+              max: 3
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - { name: label, label: Small label, type: string }
+              - { name: title, label: Title, type: string }
+              - { name: tagline, label: Tagline, type: string }
+              - { name: body, label: Description, type: text }
+              - { name: bullets, label: Bullet points, type: string, list: true }
+              - { name: button, label: Button text, type: string }
+              - { name: image, label: Image, type: image }
+
+      - name: concierge
+        label: 05 · Concierge
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Title, type: text }
+          - name: points
+            label: Points
+            type: object
+            list:
+              min: 4
+              max: 4
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: body, label: Description, type: text }
+          - { name: partner, label: Partner note, type: text }
+
+      - name: cta
+        label: Booking banner
+        type: object
+        fields:
+          - { name: eyebrow, label: Small label, type: string }
+          - { name: title, label: Title, type: text }
+          - { name: lead, label: Text, type: text }
+
+      - name: footer
+        label: Footer & customer support
+        type: object
+        fields:
+          - { name: slogan, label: Slogan, type: text }
+          - name: contacts
+            label: Contact rows
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}: {value}"
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: value, label: Shown text, type: string }
+              - { name: link, label: Link (optional), type: string, description: "e.g. tel:+81345883364 · mailto:vip@ostay.net · https://wa.me/81…" }
+          - name: qr_codes
+            label: QR codes
+            type: object
+            list:
+              max: 4
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: image, label: QR image, type: image, description: Square image, cropped tight to the code. }
+          - { name: privacy_url, label: Privacy policy link, type: string }

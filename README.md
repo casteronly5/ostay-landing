@@ -17,9 +17,15 @@ assets/
   icons/              concierge service icons (SVG)
 ```
 
+## 后台（Pages CMS）
+内容都在 `content/site.json`（页面文字、图片、联系方式、链接）和 `content/hotels.json`（城市与酒店）。
+后台配置在 `.pages.yml`。
+
+- 打开 https://app.pagescms.org ，用有本仓库权限的 GitHub 账号登录，选 `ostay-landing`。
+- 改完点 Save，会自动提交到 GitHub，约 1 分钟后网站更新。
+- 给客户开通：仓库 Settings → Collaborators → Add people，加客户的 GitHub 账号（Write 权限）。未加之前客户无法进入后台。
+
 ## 常用修改
-- **酒店**：`script.js` 顶部 `CONFIG.hotels`。新增物业复制一行，图片放 `assets/hotels/<城市>/`。
-- **主预订链接**：`CONFIG.bookingUrl`。
-- **表单**：在 formspree.io 新建表单，把 `index.html` 里的 `YOUR_FORM_ID` 换成表单 ID。
-- **客服信息 / 二维码**：`index.html` Footer 部分；二维码换 `assets/qr/` 同名文件。
+- 以上内容都可以在后台改；不用后台时也可以直接编辑 `content/` 里的两个 JSON 文件。
+- **表单**：在 formspree.io 新建表单，把 ID 填进后台 “Formspree form ID”。
 - **换图**：同名覆盖对应文件夹里的图片即可。

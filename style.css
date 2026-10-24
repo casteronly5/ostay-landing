@@ -43,7 +43,7 @@ button,input{font:inherit;color:inherit}
 
 /* Hero */
 .hero{position:relative;height:min(1200px,100vh);min-height:720px;overflow:hidden;padding-top:88px}
-.hero__bg{position:absolute;inset:88px 0 0 0;background:var(--sand) url(assets/hero/dotonbori-rooftop.jpg) center/cover no-repeat;animation:heroZoom 14s var(--ease) both}
+.hero__bg{position:absolute;inset:88px 0 0 0;background:var(--sand) var(--img) center/cover no-repeat;animation:heroZoom 14s var(--ease) both}
 @keyframes heroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
 .hero__panel{position:relative;z-index:2;margin-top:clamp(60px,12vh,160px);max-width:660px;background:rgba(247,241,230,.9);padding:48px 52px 40px;border-radius:24px}
 .hero h1{white-space:nowrap;font-size:clamp(44px,4.6vw,76px);font-weight:600;line-height:1.12;letter-spacing:-.02em;margin:18px 0 20px}
@@ -99,7 +99,7 @@ button,input{font:inherit;color:inherit}
 .member-card::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%);transform:translateX(-100%);transition:transform .9s var(--ease)}
 .member-card:hover::after{transform:translateX(100%)}
 .acc{border-top:1px solid var(--obsidian)}
-.acc__item{--img:min(260px,33%);position:relative;border-bottom:1px solid var(--obsidian);transition:min-height .45s var(--ease)}
+.acc__item{--accimg:min(260px,33%);position:relative;border-bottom:1px solid var(--obsidian);transition:min-height .45s var(--ease)}
 .acc__btn{width:100%;background:none;border:0;text-align:left;padding:32px 0;display:grid;grid-template-columns:1fr auto;gap:12px 24px;cursor:pointer}
 .acc__num{font-size:11px;line-height:16px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 .acc__title{grid-column:1;font-size:22px;font-weight:600;line-height:1.3}
@@ -107,14 +107,14 @@ button,input{font:inherit;color:inherit}
 .acc__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
 .acc__panel>div{overflow:hidden}
 .acc__item.open .acc__panel{grid-template-rows:1fr}
-.acc__item.open .acc__title{font-size:24px;max-width:calc(100% - var(--img) - 64px)}
+.acc__item.open .acc__title{font-size:24px;max-width:calc(100% - var(--accimg) - 64px)}
 .acc__title br{display:none}
 .acc__item.open .acc__title br{display:inline}
-.acc__content{padding-bottom:36px;max-width:calc(100% - var(--img) - 110px)}
+.acc__content{padding-bottom:36px;max-width:calc(100% - var(--accimg) - 110px)}
 .acc__content p{font-size:14px}
 .acc__content .hotel__tags{margin-top:14px}
 .acc__content .tag{background:var(--ivory)}
-.acc__img{position:absolute;top:63px;right:62px;width:var(--img);height:calc(100% - 99px);border-radius:14px;object-fit:cover;background:var(--bg);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none}
+.acc__img{position:absolute;top:63px;right:62px;width:var(--accimg);height:calc(100% - 99px);border-radius:14px;object-fit:cover;background:var(--bg);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none}
 .acc__item.open .acc__img{opacity:1;transform:none}
 .members .wave.bottom{bottom:-1px;height:50px}
 
@@ -130,10 +130,7 @@ button,input{font:inherit;color:inherit}
 
 /* Why */
 .why__intro{padding-top:140px;padding-bottom:80px}
-.band{position:relative;min-height:900px;display:flex;align-items:center;background:var(--sand) center/cover no-repeat}
-.band--space{background-image:url(assets/why/01-space-imamiya-interior.jpg)}
-.band--city{background-image:url(assets/why/02-city-dotonbori-rooftop.jpg)}
-.band--tech{background-image:url(assets/why/03-tech-imamiya-lobby.jpg)}
+.band{position:relative;min-height:900px;display:flex;align-items:center;background:var(--sand) var(--img) center/cover no-repeat}
 .band .wrap{width:100%}
 .band__card{max-width:660px;background:rgba(247,241,230,.92);padding:56px 50px;border-radius:24px}
 .band--right .band__card{margin-left:auto}
@@ -253,10 +250,7 @@ button,input{font:inherit;color:inherit}
   .contact{padding:80px 0}
   .why__intro{padding-top:80px;padding-bottom:40px}
   .band{min-height:0;display:block;background:none!important;padding:0 20px}
-  .band::before{content:'';display:block;aspect-ratio:16/9;border-radius:16px;background-size:cover;background-position:center}
-  .band--space::before{background-image:url(assets/why/01-space-imamiya-interior.jpg)}
-  .band--city::before{background-image:url(assets/why/02-city-dotonbori-rooftop.jpg)}
-  .band--tech::before{background-image:url(assets/why/03-tech-imamiya-lobby.jpg)}
+  .band::before{content:'';display:block;aspect-ratio:16/9;border-radius:16px;background:var(--sand) var(--img) center/cover no-repeat}
   .band .wrap{padding:0}
   .band__card{border-radius:0;padding:24px 0 56px;background:none;max-width:none}
   .band__num{font-size:56px}
