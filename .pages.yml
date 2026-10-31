@@ -24,6 +24,13 @@ content:
         label: City name
         type: string
         required: true
+      - name: country
+        label: Country
+        type: string
+      - name: image
+        label: City image
+        type: image
+        description: Portrait photo (about 3:4), shown on the city card.
       - name: all_url
         label: "“View all stays” link (optional)"
         type: string
@@ -57,10 +64,6 @@ content:
         label: Formspree form ID
         type: string
         description: The ID from formspree.io (the part after /f/). Leave empty until the form is set up.
-      - name: default_city
-        label: City shown first
-        type: string
-        description: City ID from the Hotels list (e.g. osaka).
 
       - name: hero
         label: Hero

@@ -27,59 +27,123 @@ function hydrate(site) {
   const pv = document.getElementById('privacyLink'); if (f.privacy_url) pv.href = f.privacy_url;
   if (site.formspree_id) document.getElementById('helloForm').action = 'https://formspree.io/f/' + site.formspree_id.trim();
   if (site.booking_url) CONFIG.bookingUrl = site.booking_url;
-  if (site.default_city) CONFIG.defaultCity = site.default_city;
   document.querySelectorAll('[data-booking="main"]').forEach(a => (a.href = CONFIG.bookingUrl));
 }
 
 /* ---------- Booking links ---------- */
 document.querySelectorAll('[data-booking="main"]').forEach(a => (a.href = CONFIG.bookingUrl));
 
-/* ---------- City tabs + hotels ---------- */
-const tabsEl = document.getElementById('cityTabs');
+/* ---------- Destinations: city cards → city view ---------- */
+const stage = document.getElementById('destStage');
+const gridEl = document.getElementById('cityGrid');
+const viewEl = document.getElementById('cityView');
 const hotelsEl = document.getElementById('hotels');
 const countEl = document.getElementById('cityCount');
 const allEl = document.getElementById('cityAll');
-const carouselCount = document.getElementById('carouselCount');
+const panelImg = document.getElementById('cityPanelImg');
+const panelName = document.getElementById('cityPanelName');
+const panelMeta = document.getElementById('cityPanelMeta');
+const isMobile = () => matchMedia('(max-width:768px)').matches;
+const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wait = ms => new Promise(r => setTimeout(r, reduced() ? 0 : ms));
+const stays = n => `${n} ${n === 1 ? 'stay' : 'stays'}`;
+let busy = false;
 
-function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+const PIN = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="6.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
 
-function render(cityId) {
-  const city = CONFIG.cities.find(c => c.id === cityId);
-  const list = CONFIG.hotels[cityId] || [];
-  tabsEl.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.city === cityId));
-  countEl.textContent = `${city.name}  ·  ${list.length} ${list.length === 1 ? 'stay' : 'stays'}`;
-  allEl.innerHTML = `View all ${esc(city.name)} stays on Booking.com <span>↗</span>`;
-  allEl.href = city.allUrl || '#';
-  allEl.hidden = !city.allUrl;
-  hotelsEl.innerHTML = list.map((h, i) => `
-    <article class="hotel" style="animation-delay:${i * 60}ms">
+function hotelCard(h, i) {
+  return `<article class="hotel slide-in" style="animation-delay:${120 + i * 60}ms">
       <div class="hotel__img"><img src="${esc(h.image)}" alt="${esc(h.name)}" loading="lazy"></div>
       <div class="hotel__body">
         <h3 class="hotel__name">${esc(h.name)}</h3>
-        <p class="hotel__loc"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="6.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>${esc(h.location)}</p>
+        <p class="hotel__loc">${PIN}${esc(h.location)}</p>
         ${h.address ? `<p class="hotel__addr">${esc(h.address)}</p>` : ''}
         ${h.tags?.length ? `<div class="hotel__tags">${h.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
         <a class="bk-btn" href="${esc(h.url)}" target="_blank" rel="noopener" aria-label="Book ${esc(h.name)} on Booking.com">
           <img src="assets/brand/booking-logo.png" alt="Booking.com"><span>↗</span>
         </a>
       </div>
-    </article>`).join('');
-  hotelsEl.scrollLeft = 0;
-  updateCarousel();
+    </article>`;
 }
 
-function buildTabs() {
-  tabsEl.innerHTML = CONFIG.cities.map(c => {
+function buildCities() {
+  gridEl.innerHTML = CONFIG.cities.map(c => {
     const n = CONFIG.hotels[c.id]?.length || 0;
-    return `<button class="tab" role="tab" data-city="${esc(c.id)}" aria-selected="false">${esc(c.name)} <small>${n}</small></button>`;
+    return `<button class="city" type="button" role="listitem" data-city="${esc(c.id)}" aria-label="${esc(c.name)} — ${stays(n)}">
+      <span class="city__img"><img src="${esc(c.image)}" alt="" loading="lazy"></span>
+      <span class="city__meta"><span><span class="city__name">${esc(c.name)}</span><span class="city__sub">${c.country ? esc(c.country) + '  ·  ' : ''}${stays(n)}</span></span><span class="city__arrow" aria-hidden="true">→</span></span>
+    </button>`;
   }).join('');
-  const start = CONFIG.cities.find(c => c.id === CONFIG.defaultCity) ? CONFIG.defaultCity : CONFIG.cities[0]?.id;
-  if (start) render(start);
 }
-tabsEl.addEventListener('click', e => {
-  const t = e.target.closest('.tab');
-  if (t) render(t.dataset.city);
-});
+
+function scrollToStage() {
+  const top = stage.getBoundingClientRect().top + scrollY - (isMobile() ? 80 : 120);
+  if (Math.abs(scrollY - top) > 40) scrollTo({ top, behavior: reduced() ? 'auto' : 'smooth' });
+}
+
+async function openCity(id, btn) {
+  if (busy) return; busy = true;
+  const city = CONFIG.cities.find(c => c.id === id);
+  const list = CONFIG.hotels[id] || [];
+  const from = btn?.querySelector('.city__img')?.getBoundingClientRect();
+
+  // fill the view
+  panelImg.style.setProperty('--img', `url("${city.image}")`);
+  panelName.textContent = city.name;
+  panelMeta.textContent = `${city.country ? city.country + '  ·  ' : ''}${stays(list.length)}`;
+  countEl.textContent = `${city.name}  ·  ${stays(list.length)}`;
+  allEl.href = city.allUrl || '#'; allEl.hidden = !city.allUrl;
+  hotelsEl.innerHTML = list.map(hotelCard).join('');
+
+  if (isMobile()) {
+    gridEl.hidden = true; viewEl.hidden = false;
+    stage.classList.remove('push-back'); void stage.offsetWidth; stage.classList.add('push-in');
+    scrollToStage();
+    await wait(450); busy = false; return;
+  }
+
+  // 1. other cities fade out
+  gridEl.querySelectorAll('.city').forEach(c => { if (c !== btn) c.classList.add('is-leaving'); });
+  await wait(280);
+  // 2. swap and grow the chosen image into the panel (FLIP)
+  gridEl.hidden = true; viewEl.hidden = false; viewEl.classList.remove('is-leaving');
+  const to = panelImg.getBoundingClientRect();
+  if (from && !reduced()) {
+    panelImg.animate([
+      { transform: `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${from.width / to.width}, ${from.height / to.height})`, borderRadius: '20px' },
+      { transform: 'none', borderRadius: '24px' }
+    ], { duration: 520, easing: 'cubic-bezier(.22,.61,.36,1)' });
+    viewEl.querySelectorAll('.city-back, .city-panel__name, .city-panel__meta').forEach((el, i) =>
+      el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 400, delay: 260 + i * 60, fill: 'backwards', easing: 'ease-out' }));
+  }
+  scrollToStage();
+  await wait(520); busy = false;
+  document.getElementById('cityBack').focus({ preventScroll: true });
+}
+
+async function backToCities() {
+  if (busy) return; busy = true;
+  const id = panelName.textContent;
+  if (isMobile()) {
+    viewEl.hidden = true; gridEl.hidden = false;
+    gridEl.querySelectorAll('.city').forEach(c => c.classList.remove('is-leaving'));
+    stage.classList.remove('push-in'); void stage.offsetWidth; stage.classList.add('push-back');
+    scrollToStage(); await wait(450); busy = false; return;
+  }
+  viewEl.classList.add('is-leaving');
+  await wait(300);
+  viewEl.hidden = true; viewEl.classList.remove('is-leaving'); gridEl.hidden = false;
+  gridEl.querySelectorAll('.city').forEach((c, i) => {
+    c.classList.remove('is-leaving', 'is-entering'); void c.offsetWidth;
+    c.style.animationDelay = `${i * 60}ms`; c.classList.add('is-entering');
+  });
+  scrollToStage();
+  await wait(560); busy = false;
+  const last = gridEl.querySelector(`.city[aria-label^="${CSS.escape(id)}"]`); last?.focus({ preventScroll: true });
+}
+
+gridEl.addEventListener('click', e => { const b = e.target.closest('.city'); if (b) openCity(b.dataset.city, b); });
+document.getElementById('cityBack').addEventListener('click', backToCities);
 
 /* ---------- Load content ---------- */
 const slug = s => String(s || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -89,21 +153,11 @@ Promise.all([
 ]).then(([site, cities]) => {
   if (site) { SITE = site; hydrate(site); }
   if (Array.isArray(cities)) {
-    CONFIG.cities = cities.map(c => ({ id: c.id || slug(c.name), name: c.name, allUrl: c.all_url || '' }));
+    CONFIG.cities = cities.map(c => ({ id: c.id || slug(c.name), name: c.name, country: c.country || '', image: asset(c.image), allUrl: c.all_url || '' }));
     CONFIG.hotels = Object.fromEntries(cities.map(c => [c.id || slug(c.name), (c.hotels || []).map(h => ({ ...h, image: asset(h.image) }))]));
   }
-  buildTabs();
+  buildCities();
 });
-
-/* Mobile carousel counter */
-function updateCarousel() {
-  const cards = hotelsEl.children;
-  if (!cards.length) return;
-  const w = cards[0].getBoundingClientRect().width + 16;
-  const i = Math.min(cards.length, Math.round(hotelsEl.scrollLeft / w) + 1);
-  carouselCount.textContent = `${i} / ${cards.length}`;
-}
-hotelsEl.addEventListener('scroll', () => requestAnimationFrame(updateCarousel), { passive: true });
 
 /* ---------- Accordion ---------- */
 document.querySelectorAll('.acc__item').forEach(item => {

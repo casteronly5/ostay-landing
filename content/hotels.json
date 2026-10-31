@@ -2,6 +2,8 @@
   {
     "id": "tokyo",
     "name": "Tokyo",
+    "country": "Japan",
+    "image": "assets/cities/tokyo.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -16,6 +18,8 @@
   {
     "id": "osaka",
     "name": "Osaka",
+    "country": "Japan",
+    "image": "assets/cities/osaka.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -72,6 +76,8 @@
   {
     "id": "kyoto",
     "name": "Kyoto",
+    "country": "Japan",
+    "image": "assets/cities/kyoto.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -86,6 +92,8 @@
   {
     "id": "bangkok",
     "name": "Bangkok",
+    "country": "Thailand",
+    "image": "assets/cities/bangkok.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -100,6 +108,8 @@
   {
     "id": "phuket",
     "name": "Phuket",
+    "country": "Thailand",
+    "image": "assets/cities/phuket.jpg",
     "all_url": "",
     "hotels": [
       {

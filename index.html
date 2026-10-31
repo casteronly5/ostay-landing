@@ -63,14 +63,23 @@
       </div>
       <p class="lead" data-t="destinations.lead">Five cities, hand-picked homes. Choose a city to see our stays — each one books directly on Booking.com.</p>
     </div>
-    <div class="tabs reveal" role="tablist" id="cityTabs"></div>
-    <div class="dest__meta">
-      <span id="cityCount">Osaka · 7 stays</span>
-      <a class="link" id="cityAll" href="#" target="_blank" rel="noopener">View all Tokyo stays on Booking.com <span>↗</span></a>
+    <div class="dest__stage" id="destStage">
+      <div class="cities reveal" id="cityGrid" role="list"></div>
+      <div class="city-view" id="cityView" hidden>
+        <aside class="city-panel">
+          <button class="city-back" id="cityBack" type="button"><span aria-hidden="true">←</span> All cities</button>
+          <div class="city-panel__img" id="cityPanelImg"></div>
+          <h3 class="city-panel__name" id="cityPanelName"></h3>
+          <p class="city-panel__meta" id="cityPanelMeta"></p>
+          <a class="link city-panel__all" id="cityAll" href="#" target="_blank" rel="noopener" hidden>View all stays on Booking.com <span>↗</span></a>
+        </aside>
+        <div class="city-hotels">
+          <p class="city-hotels__head" id="cityCount"></p>
+          <div class="hotels" id="hotels" aria-live="polite"></div>
+        </div>
+      </div>
     </div>
-    <div class="hotels" id="hotels" aria-live="polite"></div>
-    <p class="carousel-count note" id="carouselCount" style="display:none;margin-top:12px">1 / 6</p>
-    <p class="note">* All Booking.com buttons open the listing in a new tab.</p>
+    <p class="note">* Choose a city to see its stays. Booking.com buttons open the listing in a new tab.</p>
   </div>
 </section>
 
