@@ -59,8 +59,8 @@ function hotelCard(h, i) {
         <p class="hotel__loc">${PIN}${esc(h.location)}</p>
         ${h.address ? `<p class="hotel__addr">${esc(h.address)}</p>` : ''}
         ${h.tags?.length ? `<div class="hotel__tags">${h.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
-        <a class="bk-btn" href="${esc(h.url)}" target="_blank" rel="noopener" aria-label="Book ${esc(h.name)} on Booking.com">
-          <img src="../assets/brand/booking-logo.png" alt="Booking.com"><span>↗</span>
+        <a class="bk-btn" href="#book" data-url="${esc(h.url)}" aria-label="Book ${esc(h.name)}">
+          <img src="../assets/brand/booking-logo.png" alt="Booking.com"><span>↓</span>
         </a>
       </div>
     </article>`;
@@ -92,7 +92,7 @@ async function openCity(id, btn) {
   panelName.textContent = city.name;
   panelMeta.textContent = `${city.country ? city.country + '  ·  ' : ''}${stays(list.length)}`;
   countEl.textContent = `${city.name}  ·  ${stays(list.length)}`;
-  allEl.href = city.allUrl || '#'; allEl.hidden = !city.allUrl;
+  allEl.href = '#book'; allEl.hidden = !city.allUrl;
   hotelsEl.innerHTML = list.map(hotelCard).join('');
 
   if (isMobile()) {
@@ -158,14 +158,11 @@ function buildHero(slides) {
   if (!wrap || !slides.length) return;
   wrap.innerHTML = slides.map((s, i) => `<div class="hero__slide${i ? '' : ' is-on'}" style="--img:url('${esc(asset(s.image))}')"></div>`).join('');
   dots.innerHTML = slides.length > 1 ? slides.map((s, i) => `<button class="hero__dot${i ? '' : ' is-on'}" type="button" aria-label="${i + 1} — ${esc(s.label || '')}" style="--dur:${HERO_MS}ms"></button>`).join('') : '';
-  let cap = document.querySelector('.hero__caption');
-  if (!cap) { cap = document.createElement('p'); cap.className = 'hero__caption'; hero.appendChild(cap); }
   const els = [...wrap.children], ds = [...dots.children];
   const show = i => {
     heroIdx = (i + els.length) % els.length;
     els.forEach((e, k) => e.classList.toggle('is-on', k === heroIdx));
     ds.forEach((d, k) => { d.classList.remove('is-on'); if (k === heroIdx) { void d.offsetWidth; d.classList.add('is-on'); } });
-    cap.textContent = `${String(heroIdx + 1).padStart(2, '0')} / ${String(els.length).padStart(2, '0')} · ${slides[heroIdx].label || ''}`;
   };
   const play = () => { clearInterval(heroTimer); if (els.length > 1 && !reduced()) heroTimer = setInterval(() => show(heroIdx + 1), HERO_MS); };
   ds.forEach((d, k) => d.addEventListener('click', () => { show(k); play(); }));
