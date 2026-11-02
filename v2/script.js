@@ -27,11 +27,11 @@ function hydrate(site) {
   const pv = document.getElementById('privacyLink'); if (f.privacy_url) pv.href = f.privacy_url;
   if (site.formspree_id) document.getElementById('helloForm').action = 'https://formspree.io/f/' + site.formspree_id.trim();
   if (site.booking_url) CONFIG.bookingUrl = site.booking_url;
-  document.querySelectorAll('[data-booking="main"]').forEach(a => (a.href = CONFIG.bookingUrl));
 }
 
 /* ---------- Booking links ---------- */
-document.querySelectorAll('[data-booking="main"]').forEach(a => (a.href = CONFIG.bookingUrl));
+/* Booking links: temporarily scroll to the on-page booking block (#book) instead of an external site */
+document.querySelectorAll('[data-booking="main"]').forEach(a => { a.href = '#book'; a.removeAttribute('target'); a.removeAttribute('rel'); });
 
 /* ---------- Destinations: city cards → city view ---------- */
 const stage = document.getElementById('destStage');
@@ -145,6 +145,37 @@ async function backToCities() {
 gridEl.addEventListener('click', e => { const b = e.target.closest('.city'); if (b) openCity(b.dataset.city, b); });
 document.getElementById('cityBack').addEventListener('click', backToCities);
 
+/* ---------- Hero slideshow ---------- */
+const HERO_FALLBACK = [
+  ['01-tokyo-tower-terrace','Tokyo · Rooftop afternoon'],['02-tokyo-tower-twilight','Tokyo · Twilight terrace'],
+  ['03-skytree-window-seat','Tokyo · Morning by the window'],['04-fuji-winter-morning','Tokyo · Mt. Fuji morning'],
+  ['05-osaka-castle-balcony','Osaka · Golden hour'],['06-phuket-pool-sunset','Phuket · Sunset by the pool'],
+].map(([f, label]) => ({ image: `assets/hero/slides/${f}.jpg`, label }));
+const HERO_MS = 6000;
+let heroTimer = null, heroIdx = 0;
+function buildHero(slides) {
+  const wrap = document.getElementById('heroSlides'), dots = document.getElementById('heroDots'), hero = document.querySelector('.hero');
+  if (!wrap || !slides.length) return;
+  wrap.innerHTML = slides.map((s, i) => `<div class="hero__slide${i ? '' : ' is-on'}" style="--img:url('${esc(asset(s.image))}')"></div>`).join('');
+  dots.innerHTML = slides.length > 1 ? slides.map((s, i) => `<button class="hero__dot${i ? '' : ' is-on'}" type="button" aria-label="${i + 1} — ${esc(s.label || '')}" style="--dur:${HERO_MS}ms"></button>`).join('') : '';
+  let cap = document.querySelector('.hero__caption');
+  if (!cap) { cap = document.createElement('p'); cap.className = 'hero__caption'; hero.appendChild(cap); }
+  const els = [...wrap.children], ds = [...dots.children];
+  const show = i => {
+    heroIdx = (i + els.length) % els.length;
+    els.forEach((e, k) => e.classList.toggle('is-on', k === heroIdx));
+    ds.forEach((d, k) => { d.classList.remove('is-on'); if (k === heroIdx) { void d.offsetWidth; d.classList.add('is-on'); } });
+    cap.textContent = `${String(heroIdx + 1).padStart(2, '0')} / ${String(els.length).padStart(2, '0')} · ${slides[heroIdx].label || ''}`;
+  };
+  const play = () => { clearInterval(heroTimer); if (els.length > 1 && !reduced()) heroTimer = setInterval(() => show(heroIdx + 1), HERO_MS); };
+  ds.forEach((d, k) => d.addEventListener('click', () => { show(k); play(); }));
+  hero.addEventListener('mouseenter', () => { clearInterval(heroTimer); hero.classList.add('paused'); });
+  hero.addEventListener('mouseleave', () => { hero.classList.remove('paused'); play(); });
+  document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(heroTimer) : play());
+  slides.slice(1).forEach(s => { const im = new Image(); im.src = asset(s.image); });
+  show(0); play();
+}
+
 /* ---------- Load content ---------- */
 const slug = s => String(s || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 Promise.all([
@@ -152,6 +183,7 @@ Promise.all([
   fetch('content/hotels.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => null),
 ]).then(([site, cities]) => {
   if (site) { SITE = site; hydrate(site); }
+  buildHero(site?.hero?.slides?.length ? site.hero.slides : HERO_FALLBACK);
   if (Array.isArray(cities)) {
     CONFIG.cities = cities.map(c => ({ id: c.id || slug(c.name), name: c.name, country: c.country || '', image: asset(c.image), allUrl: c.all_url || '' }));
     CONFIG.hotels = Object.fromEntries(cities.map(c => [c.id || slug(c.name), (c.hotels || []).map(h => ({ ...h, image: asset(h.image) }))]));

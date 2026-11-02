@@ -43,7 +43,17 @@ button,input{font:inherit;color:inherit}
 
 /* Hero */
 .hero{position:relative;height:min(1200px,100vh);min-height:720px;overflow:hidden;padding-top:88px}
-.hero__bg{position:absolute;inset:88px 0 0 0;background:var(--sand) var(--img) center/cover no-repeat;animation:heroZoom 14s var(--ease) both}
+.hero__bg{position:absolute;inset:88px 0 0 0;background:var(--sand);overflow:hidden}
+.hero__slide{position:absolute;inset:0;background:var(--img) center/cover no-repeat;opacity:0;transform:scale(1.06);transition:opacity 1.4s var(--ease),transform 8s linear}
+.hero__slide.is-on{opacity:1;transform:scale(1)}
+.hero__dots{position:absolute;z-index:3;right:40px;bottom:96px;display:flex;align-items:center;gap:10px}
+.hero__dot{position:relative;width:36px;height:3px;border:0;padding:0;border-radius:2px;background:rgba(255,255,255,.55);cursor:pointer;overflow:hidden}
+.hero__dot::after{content:'';position:absolute;inset:0;background:var(--yellow);transform:scaleX(0);transform-origin:left}
+.hero__dot.is-on::after{animation:dotFill var(--dur,6s) linear forwards}
+.hero.paused .hero__dot.is-on::after{animation-play-state:paused}
+.hero__dot:hover{background:#fff}
+.hero__caption{position:absolute;z-index:3;right:40px;bottom:112px;font-size:12px;font-weight:600;letter-spacing:.08em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.35);transition:opacity .4s}
+@keyframes dotFill{to{transform:scaleX(1)}}
 @keyframes heroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
 .hero__panel{position:relative;z-index:2;margin-top:clamp(60px,12vh,160px);max-width:660px;background:rgba(247,241,230,.9);padding:48px 52px 40px;border-radius:24px}
 .hero h1{white-space:nowrap;font-size:clamp(44px,4.6vw,76px);font-weight:600;line-height:1.12;letter-spacing:-.02em;margin:18px 0 20px}
@@ -251,7 +261,10 @@ button,input{font:inherit;color:inherit}
   .header.open .menu-btn span:nth-child(2){opacity:0}
   .header.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .hero{height:auto;min-height:0;padding-top:64px}
-  .hero__bg{position:relative;inset:auto;aspect-ratio:16/9;animation:none}
+  .hero__bg{position:relative;inset:auto;aspect-ratio:16/9}
+  .hero__dots{right:20px;bottom:auto;top:calc(64px + (100vw * 9 / 16) - 22px)}
+  .hero__caption{display:none}
+  .hero__dot{width:24px}
   .hero__panel{margin:0;padding:32px 20px 48px;border-radius:0;background:var(--bg);max-width:none}
   .hero h1{font-size:40px}
   .hero p.sub{font-size:17px}
@@ -422,3 +435,5 @@ button,input{font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){.perk{opacity:1;transform:none}}
 .acc__item.open .acc__title{font-size:21px}
 @media (max-width:768px){.acc__item.open .acc__title{font-size:18px}}
+
+@media (prefers-reduced-motion:reduce){.hero__slide{transition:opacity .3s;transform:none!important}}

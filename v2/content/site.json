@@ -5,7 +5,33 @@
     "eyebrow": "Residential stays · Japan & Asia",
     "title": "Stay Simple.\nStay Curious.",
     "subtitle": "Borderless peace of mind for a journey that is truly yours.",
-    "image": "assets/hero/hero-v2.jpg"
+    "image": "assets/hero/slides/01-tokyo-tower-terrace.jpg",
+    "slides": [
+      {
+        "image": "assets/hero/slides/01-tokyo-tower-terrace.jpg",
+        "label": "Tokyo · Rooftop afternoon"
+      },
+      {
+        "image": "assets/hero/slides/02-tokyo-tower-twilight.jpg",
+        "label": "Tokyo · Twilight terrace"
+      },
+      {
+        "image": "assets/hero/slides/03-skytree-window-seat.jpg",
+        "label": "Tokyo · Morning by the window"
+      },
+      {
+        "image": "assets/hero/slides/04-fuji-winter-morning.jpg",
+        "label": "Tokyo · Mt. Fuji morning"
+      },
+      {
+        "image": "assets/hero/slides/05-osaka-castle-balcony.jpg",
+        "label": "Osaka · Golden hour"
+      },
+      {
+        "image": "assets/hero/slides/06-phuket-pool-sunset.jpg",
+        "label": "Phuket · Sunset by the pool"
+      }
+    ]
   },
   "destinations": {
     "eyebrow": "01 · Destinations",
