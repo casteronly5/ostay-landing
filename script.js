@@ -6,7 +6,7 @@ let CONFIG = { bookingUrl: 'https://www.booking.com/', cities: [], hotels: {}, d
 let SITE = null;
 
 function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
-const nl2br = s => esc(s).replace(/\n/g, '<br>');
+const nl2br = s => esc(s).replace(/\n/g, ' <br>');
 const get = (obj, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
 const asset = p => (p || '').replace(/^\//, '');
 
