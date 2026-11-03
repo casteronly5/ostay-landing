@@ -25,7 +25,6 @@ function hydrate(site) {
   if (Array.isArray(f.qr_codes)) document.getElementById('qrList').innerHTML = f.qr_codes.map(q =>
     `<figure class="qr"><img src="${esc(asset(q.image))}" alt="${esc(q.label)} QR code" loading="lazy"><figcaption>${esc(q.label)}</figcaption></figure>`).join('');
   const pv = document.getElementById('privacyLink'); if (f.privacy_url) pv.href = f.privacy_url;
-  if (site.formspree_id) document.getElementById('helloForm').action = 'https://formspree.io/f/' + site.formspree_id.trim();
   if (site.booking_url) CONFIG.bookingUrl = site.booking_url;
 }
 
@@ -246,25 +245,28 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal, .perks').forEach(el => io.observe(el));
 
-/* ---------- Say Hello form (Formspree) ---------- */
+/* ---------- Join Free form → OSTAY Members (Google Apps Script) ---------- */
 const form = document.getElementById('helloForm');
 const statusEl = document.getElementById('formStatus');
+const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 form.addEventListener('submit', async e => {
   e.preventDefault();
-  if (form.action.includes('YOUR_FORM_ID')) {
-    statusEl.textContent = 'Form is not connected yet — add the Formspree ID in the site settings.';
-    return;
-  }
+  const fd = new FormData(form);
+  const name = String(fd.get('name') || '').trim();
+  const email = String(fd.get('email') || '').trim();
+  if (!name) { statusEl.textContent = 'Please enter your name.'; form.querySelector('[name=name]').focus(); return; }
+  if (!isEmail(email)) { statusEl.textContent = 'Please enter a valid email address.'; form.querySelector('[name=email]').focus(); return; }
+  const endpoint = (SITE && SITE.membership_endpoint || '').trim();
+  if (!endpoint) { statusEl.textContent = 'Membership sign-up is opening soon — please check back shortly.'; return; }
   const btn = form.querySelector('button');
   btn.disabled = true;
   statusEl.textContent = 'Sending…';
   try {
-    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
-    if (!res.ok) throw new Error();
+    await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(fd) });
     form.reset();
-    statusEl.textContent = form.querySelector('[name=_subject]') ? 'You’re in — welcome to OSTAY Members.' : 'Thank you! We’ll be in touch soon.';
+    statusEl.textContent = `Thank you, ${name}! Please check your inbox — your OSTAY Members details are on their way.`;
   } catch {
-    statusEl.textContent = 'Something went wrong. Please email vip@ostay.net.';
+    statusEl.textContent = 'Something went wrong. Please try again, or email vip@ostay.net.';
   } finally {
     btn.disabled = false;
   }

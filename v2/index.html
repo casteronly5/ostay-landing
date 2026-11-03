@@ -175,15 +175,15 @@
         <p class="join__sub">Free membership. Just your name and email.</p>
       </div>
       <div class="join__side">
-        <form class="join__form" id="helloForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="hidden" name="_subject" value="New OSTAY member sign-up">
+        <form class="join__form" id="helloForm" method="POST" novalidate>
           <div class="join__fields">
             <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Alex Smith" required autocomplete="name"></div>
             <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="hello@example.com" required autocomplete="email"></div>
           </div>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <button class="btn btn--yellow join__btn" type="submit">Join Free <span class="arr fwd">→</span></button>
-          <p class="form-status" id="formStatus" role="status"></p>
+          <p class="join__privacy">We’ll only use your email to send your member details and OSTAY news. Unsubscribe anytime.</p>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
         <div class="join__talk">
           <p>Questions first? Talk to a real person.</p>

@@ -1,6 +1,5 @@
 {
   "booking_url": "https://www.booking.com/",
-  "formspree_id": "",
   "hero": {
     "eyebrow": "Residential stays · Japan & Asia",
     "title": "Stay Simple.\nStay Curious.",
@@ -207,5 +206,6 @@
       }
     ],
     "privacy_url": ""
-  }
+  },
+  "membership_endpoint": ""
 }
