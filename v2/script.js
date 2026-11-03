@@ -146,9 +146,7 @@ document.getElementById('cityBack').addEventListener('click', backToCities);
 
 /* ---------- Hero slideshow ---------- */
 const HERO_FALLBACK = [
-  ['01-tokyo-tower-terrace','Tokyo · Rooftop afternoon'],['02-tokyo-tower-twilight','Tokyo · Twilight terrace'],
-  ['03-skytree-window-seat','Tokyo · Morning by the window'],['04-fuji-winter-morning','Tokyo · Mt. Fuji morning'],
-  ['05-osaka-castle-balcony','Osaka · Golden hour'],['06-phuket-pool-sunset','Phuket · Sunset by the pool'],
+  ['07-tokyo-tower-living','Tokyo · Afternoon at home'],['08-fuji-lake-morning','Mt. Fuji · Lakeside morning'],['09-kl-infinity-pool','Kuala Lumpur · Sunset swim'],
 ].map(([f, label]) => ({ image: `assets/hero/slides/${f}.jpg`, label }));
 const HERO_MS = 6000;
 let heroTimer = null, heroIdx = 0;

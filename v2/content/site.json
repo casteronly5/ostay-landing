@@ -4,31 +4,19 @@
     "eyebrow": "Residential stays · Japan & Asia",
     "title": "Stay Simple.\nStay Curious.",
     "subtitle": "Borderless peace of mind for a journey that is truly yours.",
-    "image": "assets/hero/slides/01-tokyo-tower-terrace.jpg",
+    "image": "assets/hero/slides/07-tokyo-tower-living.jpg",
     "slides": [
       {
-        "image": "assets/hero/slides/01-tokyo-tower-terrace.jpg",
-        "label": "Tokyo · Rooftop afternoon"
+        "image": "assets/hero/slides/07-tokyo-tower-living.jpg",
+        "label": "Tokyo · Afternoon at home"
       },
       {
-        "image": "assets/hero/slides/02-tokyo-tower-twilight.jpg",
-        "label": "Tokyo · Twilight terrace"
+        "image": "assets/hero/slides/08-fuji-lake-morning.jpg",
+        "label": "Mt. Fuji · Lakeside morning"
       },
       {
-        "image": "assets/hero/slides/03-skytree-window-seat.jpg",
-        "label": "Tokyo · Morning by the window"
-      },
-      {
-        "image": "assets/hero/slides/04-fuji-winter-morning.jpg",
-        "label": "Tokyo · Mt. Fuji morning"
-      },
-      {
-        "image": "assets/hero/slides/05-osaka-castle-balcony.jpg",
-        "label": "Osaka · Golden hour"
-      },
-      {
-        "image": "assets/hero/slides/06-phuket-pool-sunset.jpg",
-        "label": "Phuket · Sunset by the pool"
+        "image": "assets/hero/slides/09-kl-infinity-pool.jpg",
+        "label": "Kuala Lumpur · Sunset swim"
       }
     ]
   },
