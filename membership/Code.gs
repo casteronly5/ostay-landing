@@ -40,7 +40,7 @@ const DEFAULT_EMAILS = [
     '• 5% off direct bookings, from your next stay\n' +
     '• +1 free night on direct stays of 5+ nights\n' +
     '• OSTAY Local Pantry Selection for every guest on your current booking (normally ¥1,500 per person)\n' +
-    '• A real person on call every day — 10:00–23:00 Japan time · 8:00–21:00 Thailand time\n\n' +
+    '• A real person on call every day — 9:00–22:00 Japan time · 8:00–23:00 Thailand time\n\n' +
     'Keep this email: when you book with us directly, just share your member ID.\n\n' +
     'Questions? Reply to this email, message us on WhatsApp, or call {{phone}}.\n\n' +
     'Stay Simple. Stay Curious.\nThe OSTAY team'],

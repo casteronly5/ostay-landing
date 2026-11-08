@@ -23,7 +23,7 @@
   "destinations": {
     "eyebrow": "01 · Destinations",
     "title": "Where will your next\neveryday be?",
-    "lead": "Five cities, hand-picked homes. Choose a city to see our stays — each one books directly on Booking.com."
+    "lead": "Hand-picked homes across Japan and Thailand. Choose a city to see our stays — Hokkaido is coming soon."
   },
   "members": {
     "eyebrow": "02 · OSTAY Members",
@@ -92,7 +92,7 @@
           "Short or long stays"
         ],
         "button": "Find a spacious stay",
-        "image": "assets/why/01-space-imamiya-interior.jpg"
+        "image": "assets/why/01-space-golden-living.jpg"
       },
       {
         "label": "City connection",
@@ -105,20 +105,20 @@
           "Easy evening walks"
         ],
         "button": "Find a city-centre stay",
-        "image": "assets/why/02-city-dotonbori-rooftop.jpg"
+        "image": "assets/why/02-city-arch-balcony.jpg"
       },
       {
         "label": "Smart check-in",
         "title": "Seamless Technology",
         "tagline": "Invisible intelligence, seamless experience.",
-        "body": "Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? We’re online anytime.",
+        "body": "Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? Our team is on call every day.",
         "bullets": [
           "Self check-in by smart lock",
           "Contact-free entry",
-          "Online support, anytime"
+          "Daily concierge support"
         ],
         "button": "How smart check-in works",
-        "image": "assets/why/03-tech-imamiya-lobby.jpg"
+        "image": "assets/why/03-smart-lock-closeup.jpg"
       }
     ]
   },
@@ -127,8 +127,8 @@
     "title": "Free to explore.\nSafe to return.",
     "points": [
       {
-        "title": "24/7 online support",
-        "body": "Whenever you need help on your trip, reach us online anytime."
+        "title": "A real person, every day",
+        "body": "Our concierge team is on call 9:00–22:00 Japan time and 8:00–23:00 Thailand time."
       },
       {
         "title": "Safe, secure stays",
@@ -148,7 +148,7 @@
   "cta": {
     "eyebrow": "Book your stay",
     "title": "Your next everyday\nstarts here.",
-    "lead": "Five cities. Hand-picked homes. Booked in a few clicks."
+    "lead": "Japan and Thailand. Hand-picked homes. Booked in a few clicks."
   },
   "footer": {
     "slogan": "Stay Simple.\nStay Curious.",

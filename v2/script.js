@@ -68,6 +68,10 @@ function hotelCard(h, i) {
 function buildCities() {
   gridEl.innerHTML = CONFIG.cities.map(c => {
     const n = CONFIG.hotels[c.id]?.length || 0;
+    if (c.soon || !n) return `<div class="city city--soon" role="listitem" aria-label="${esc(c.name)} — coming soon">
+      <span class="city__img"><img src="${esc(c.image)}" alt="" loading="lazy"><span class="city__badge">Coming soon</span></span>
+      <span class="city__meta"><span><span class="city__name">${esc(c.name)}</span><span class="city__sub">${c.country ? esc(c.country) + '  ·  ' : ''}Coming soon</span></span></span>
+    </div>`;
     return `<button class="city" type="button" role="listitem" data-city="${esc(c.id)}" aria-label="${esc(c.name)} — ${stays(n)}">
       <span class="city__img"><img src="${esc(c.image)}" alt="" loading="lazy"></span>
       <span class="city__meta"><span><span class="city__name">${esc(c.name)}</span><span class="city__sub">${c.country ? esc(c.country) + '  ·  ' : ''}${stays(n)}</span></span><span class="city__arrow" aria-hidden="true">→</span></span>
@@ -141,7 +145,7 @@ async function backToCities() {
   const last = gridEl.querySelector(`.city[aria-label^="${CSS.escape(id)}"]`); last?.focus({ preventScroll: true });
 }
 
-gridEl.addEventListener('click', e => { const b = e.target.closest('.city'); if (b) openCity(b.dataset.city, b); });
+gridEl.addEventListener('click', e => { const b = e.target.closest('button.city'); if (b) openCity(b.dataset.city, b); });
 document.getElementById('cityBack').addEventListener('click', backToCities);
 
 /* ---------- Hero slideshow ---------- */
@@ -179,7 +183,7 @@ Promise.all([
   if (site) { SITE = site; hydrate(site); }
   buildHero(site?.hero?.slides?.length ? site.hero.slides : HERO_FALLBACK);
   if (Array.isArray(cities)) {
-    CONFIG.cities = cities.map(c => ({ id: c.id || slug(c.name), name: c.name, country: c.country || '', image: asset(c.image), allUrl: c.all_url || '' }));
+    CONFIG.cities = cities.map(c => ({ id: c.id || slug(c.name), name: c.name, country: c.country || '', image: asset(c.image), allUrl: c.all_url || '', soon: !!c.coming_soon }));
     CONFIG.hotels = Object.fromEntries(cities.map(c => [c.id || slug(c.name), (c.hotels || []).map(h => ({ ...h, image: asset(h.image) }))]));
   }
   buildCities();

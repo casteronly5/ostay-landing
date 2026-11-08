@@ -3,7 +3,7 @@
     "id": "tokyo",
     "name": "Tokyo",
     "country": "Japan",
-    "image": "assets/cities-v2/tokyo.jpg",
+    "image": "assets/cities-v2/tokyo.jpg?v=2",
     "all_url": "",
     "hotels": [
       {
@@ -19,7 +19,7 @@
     "id": "osaka",
     "name": "Osaka",
     "country": "Japan",
-    "image": "assets/cities-v2/osaka.jpg",
+    "image": "assets/cities-v3/osaka-dotonbori.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -77,7 +77,7 @@
     "id": "kyoto",
     "name": "Kyoto",
     "country": "Japan",
-    "image": "assets/cities-v2/kyoto.jpg",
+    "image": "assets/cities-v3/kyoto.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -90,10 +90,19 @@
     ]
   },
   {
+    "id": "hokkaido",
+    "name": "Hokkaido",
+    "country": "Japan",
+    "image": "assets/cities-v3/hokkaido.jpg",
+    "all_url": "",
+    "coming_soon": true,
+    "hotels": []
+  },
+  {
     "id": "bangkok",
     "name": "Bangkok",
     "country": "Thailand",
-    "image": "assets/cities-v2/bangkok.jpg",
+    "image": "assets/cities-v3/bangkok.jpg",
     "all_url": "",
     "hotels": [
       {
@@ -109,7 +118,7 @@
     "id": "phuket",
     "name": "Phuket",
     "country": "Thailand",
-    "image": "assets/cities-v2/phuket.jpg",
+    "image": "assets/cities-v3/phuket.jpg",
     "all_url": "",
     "hotels": [
       {
