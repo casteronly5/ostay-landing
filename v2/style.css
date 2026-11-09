@@ -458,3 +458,17 @@ button,input{font:inherit;color:inherit}
   .header .wrap{padding:0 8px 0 16px}
   .nav{top:56px;margin:0;border-radius:20px}
 }
+
+/* ---------- Header: never squash the logo; collapse nav below 1100px（2026-11-10） ---------- */
+.header .logo{flex-shrink:0}
+.header .logo img{max-width:none;flex-shrink:0}
+@media (min-width:769px) and (max-width:1100px){
+  .menu-btn{display:block;margin-left:12px}
+  .nav{position:fixed;top:76px;left:0;right:0;margin:0;flex-direction:column;gap:0;background:var(--bg);padding:8px 28px 20px;border-radius:24px;transform:translateY(-140%);opacity:0;pointer-events:none;transition:transform .4s var(--ease),opacity .3s;box-shadow:0 10px 30px rgba(45,41,38,.10)}
+  .nav a{padding:14px 0;border-bottom:1px solid rgba(45,41,38,.12);font-size:16px}
+  .header .btn{margin-left:auto}
+  .header.open .nav{transform:none;opacity:1;pointer-events:auto}
+  .header.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .header.open .menu-btn span:nth-child(2){opacity:0}
+  .header.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
