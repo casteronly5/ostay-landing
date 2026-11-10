@@ -472,3 +472,13 @@ button,input{font:inherit;color:inherit}
   .header.open .menu-btn span:nth-child(2){opacity:0}
   .header.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
+
+/* ---------- Member perks: 3 benefits（client doc ①②④, 2026-11-10） ---------- */
+.perks{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1200px){.perks{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:768px){.perks{grid-template-columns:1fr 1fr}.perks .perk:nth-child(3){grid-column:1 / -1}}
+/* mobile: fully hide the closed menu (it peeked above the pill header) */
+@media (max-width:768px){
+  .nav{transform:translateY(-140%);opacity:0;pointer-events:none;transition:transform .4s var(--ease),opacity .3s}
+  .header.open .nav{transform:none;opacity:1;pointer-events:auto}
+}
