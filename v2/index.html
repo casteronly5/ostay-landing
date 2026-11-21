@@ -11,10 +11,8 @@
 <meta property="og:image" content="../assets/hero/slides/07-tokyo-tower-living.jpg">
 <link rel="icon" type="image/png" href="../assets/brand/favicon.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=v2-20261116">
+<link rel="preload" href="../assets/fonts/montserrat-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=v2-20261122b">
 <script>addEventListener("error",function(){document.documentElement.classList.add("no-anim")},true)</script>
 </head>
 <body>
@@ -48,8 +46,8 @@
       <h1 data-t="hero.title">Stay Simple.<br>Stay Curious.</h1>
       <p class="sub" data-t="hero.subtitle">Borderless peace of mind for a journey that is truly yours.</p>
       <div class="hero__ctas">
-        <a class="btn btn--yellow" data-booking="main" href="#book">Book your stay <span class="arr down">↓</span></a>
-        <a class="link" href="#why">Why OSTAY <span>↓</span></a>
+        <a class="btn btn--yellow" href="#destinations">Explore our stays <span class="arr down">↓</span></a>
+        <a class="link" href="#members">Join free <span>↓</span></a>
       </div>
     </div>
   </div>
@@ -105,95 +103,77 @@
       <li class="perk perk--hi"><img class="ic" src="../assets/icons/m/tag.svg" alt="" aria-hidden="true"><b class="perk__no">03</b><strong>5% OFF + 1 FREE NIGHT</strong><span>Off OTA prices from your next direct stay · 6th night free</span></li>
     </ul>
 
-    <div class="mem__detail">
-      <div class="mem__cardwrap reveal">
+    <div class="mem__grid">
+      <div class="inc reveal">
+        <p class="eyebrow mem__inc">What’s included</p>
+        <article class="inc__item">
+          <span class="inc__badge"><img class="ic" src="../assets/icons/m/bell.svg" alt="" aria-hidden="true"></span>
+          <div class="inc__body">
+            <p class="inc__num">01 · Real concierge</p>
+            <h3 class="inc__title">Real people, here to help throughout your stay.</h3>
+            <p>Every day · 9:00–22:00 JST (Japan) · 8:00–23:00 ICT (Thailand)</p>
+            <p class="svc__h">Complimentary</p>
+            <ul class="svc"><li><img class="ic" src="../assets/icons/m/car.svg" alt="" aria-hidden="true"><span>Car arrangement</span></li><li><img class="ic" src="../assets/icons/m/pin.svg" alt="" aria-hidden="true"><span>Directions</span></li><li><img class="ic" src="../assets/icons/m/compass.svg" alt="" aria-hidden="true"><span>Local tips</span></li><li><img class="ic" src="../assets/icons/m/dining.svg" alt="" aria-hidden="true"><span>Restaurant booking</span></li><li><img class="ic" src="../assets/icons/m/support.svg" alt="" aria-hidden="true"><span>Check-in &amp; stay support</span></li></ul>
+            <p class="svc__h">Paid add-ons</p>
+            <ul class="svc"><li><img class="ic" src="../assets/icons/m/luggage.svg" alt="" aria-hidden="true"><span>Luggage &amp; lost-item delivery</span></li><li><img class="ic" src="../assets/icons/m/ticket.svg" alt="" aria-hidden="true"><span>Shinkansen booking</span></li></ul>
+            <div class="hotel__tags"><span class="tag">All members</span></div>
+          </div>
+          <img class="inc__img" src="../assets/members/01-concierge-desk.jpg" alt="" loading="lazy">
+        </article>
+        <article class="inc__item">
+          <span class="inc__badge"><img class="ic" src="../assets/icons/m/basket.svg" alt="" aria-hidden="true"></span>
+          <div class="inc__body">
+            <p class="inc__num">02 · Complimentary local treats</p>
+            <h3 class="inc__title">A selection of local favorites, on us — for every guest.</h3>
+            <p>One complimentary OSTAY Local Pantry Selection for every guest on this booking — normally ¥1,500 per person.</p>
+            <div class="hotel__tags"><span class="tag">This booking</span><span class="tag">Per guest</span></div>
+          </div>
+          <img class="inc__img" src="../assets/members/02-pantry-fuji.jpg" alt="" loading="lazy">
+        </article>
+        <article class="inc__item">
+          <span class="inc__badge"><img class="ic" src="../assets/icons/m/tag.svg" alt="" aria-hidden="true"></span>
+          <div class="inc__body">
+            <p class="inc__num">03 · 5% off + 1 free night</p>
+            <h3 class="inc__title">Save 5% when you book direct, plus your 6th night free.</h3>
+            <p>Book direct with OSTAY and pay 5% less than OTA prices, every time. Stay 5 nights or more and we add an extra night, free.</p>
+            <div class="hotel__tags"><span class="tag">From your next booking</span><span class="tag">Direct booking only</span><span class="tag">Friends welcome</span></div>
+          </div>
+          <img class="inc__img" src="../assets/members/03-dinner-table.jpg" alt="" loading="lazy">
+        </article>
+      </div>
+
+      <aside class="mem__side reveal">
         <div class="member-card" id="memberCard">
           <i class="ring r1"></i><i class="ring r2"></i>
           <img class="mc__logo" src="../assets/brand/ostay-logo.png" alt="OSTAY">
           <div class="mc__deal"><b>5%</b><small>Off every direct stay</small><i></i></div>
           <span class="mc__label">MEMBERS</span>
         </div>
-      </div>
-      <div class="reveal">
-        <p class="eyebrow mem__inc">What’s included</p>
-        <div class="acc" id="acc">
-          <div class="acc__item">
-            <button class="acc__btn" aria-expanded="false">
-              <span class="acc__badge"><img class="ic" src="../assets/icons/m/bell.svg" alt="" aria-hidden="true"></span>
-              <span class="acc__num">01 · Real concierge</span>
-              <span class="acc__title">Real people, here to help<br> throughout your stay.</span>
-              <span class="acc__icon">+</span>
-            </button>
-            <div class="acc__panel"><div><div class="acc__content"><div>
-              <p>Every day<br>9:00–22:00 JST (Japan) · 8:00–23:00 ICT (Thailand)</p>
-              <p class="svc__h">Complimentary</p>
-              <ul class="svc"><li><img class="ic" src="../assets/icons/m/car.svg" alt="" aria-hidden="true"><span>Car arrangement</span></li><li><img class="ic" src="../assets/icons/m/pin.svg" alt="" aria-hidden="true"><span>Directions</span></li><li><img class="ic" src="../assets/icons/m/compass.svg" alt="" aria-hidden="true"><span>Local tips</span></li><li><img class="ic" src="../assets/icons/m/dining.svg" alt="" aria-hidden="true"><span>Restaurant booking</span></li><li><img class="ic" src="../assets/icons/m/support.svg" alt="" aria-hidden="true"><span>Check-in &amp; stay support</span></li></ul>
-              <p class="svc__h">Paid add-ons</p>
-              <ul class="svc"><li><img class="ic" src="../assets/icons/m/luggage.svg" alt="" aria-hidden="true"><span>Luggage &amp; lost-item delivery</span></li><li><img class="ic" src="../assets/icons/m/ticket.svg" alt="" aria-hidden="true"><span>Shinkansen booking</span></li></ul>
-              <div class="hotel__tags"><span class="tag">All members</span></div>
-            </div>
-              <img class="acc__img" src="../assets/members/01-concierge-desk.jpg" alt="" loading="lazy">
-            </div></div></div>
-          </div>
-          <div class="acc__item">
-            <button class="acc__btn" aria-expanded="false">
-              <span class="acc__badge"><img class="ic" src="../assets/icons/m/basket.svg" alt="" aria-hidden="true"></span>
-              <span class="acc__num">02 · Complimentary local treats</span>
-              <span class="acc__title">A selection of local favorites,<br> on us — for every guest.</span>
-              <span class="acc__icon">+</span>
-            </button>
-            <div class="acc__panel"><div><div class="acc__content"><div>
-              <p>One complimentary OSTAY Local Pantry Selection for every guest on this booking — normally ¥1,500 per person.</p>
-              <div class="hotel__tags"><span class="tag">This booking</span><span class="tag">Per guest</span></div>
-            </div>
-              <img class="acc__img" src="../assets/members/02-pantry-fuji.jpg" alt="" loading="lazy">
-            </div></div></div>
-          </div>
-          <div class="acc__item">
-            <button class="acc__btn" aria-expanded="false">
-              <span class="acc__badge"><img class="ic" src="../assets/icons/m/tag.svg" alt="" aria-hidden="true"></span>
-              <span class="acc__num">03 · 5% off + 1 free night</span>
-              <span class="acc__title">Save 5% when you book direct,<br> plus your 6th night free.</span>
-              <span class="acc__icon">+</span>
-            </button>
-            <div class="acc__panel"><div><div class="acc__content"><div>
-              <p>Book direct with OSTAY and pay 5% less than OTA prices, every time. Stay 5 nights or more and we add an extra night, free.</p>
-              <div class="hotel__tags"><span class="tag">From your next booking</span><span class="tag">Direct booking only</span><span class="tag">Friends welcome</span></div>
-            </div>
-              <img class="acc__img" src="../assets/members/03-dinner-table.jpg" alt="" loading="lazy">
-            </div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="join reveal" id="contact">
-      <div class="join__pitch">
-        <p class="eyebrow">Join OSTAY Members</p>
-        <h3 class="join__title">Your benefits<br>start here.</h3>
-        <p class="join__sub">Free membership. Just your name and email.</p>
-      </div>
-      <div class="join__side">
-        <form class="join__form" id="helloForm" method="POST" novalidate>
+        <div class="join join--yellow" id="contact">
+          <p class="eyebrow">Join OSTAY Members</p>
+          <h3 class="join__title">Your benefits<br>start here.</h3>
+          <p class="join__sub">Free membership. Just your name and email.</p>
+          <form class="join__form" id="helloForm" method="POST" novalidate>
           <div class="join__fields">
             <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Alex Smith" required autocomplete="name"></div>
             <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="hello@example.com" required autocomplete="email"></div>
           </div>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <button class="btn btn--yellow join__btn" type="submit">Join Free <span class="arr fwd">→</span></button>
+          <button class="btn btn--dark join__btn" type="submit">Join Free <span class="arr fwd">→</span></button>
           <p class="join__privacy">We’ll only use your email to send your member details and OSTAY news. Unsubscribe anytime.</p>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
-        <div class="join__talk">
+          <div class="join__talk">
           <p>Questions first? Talk to a real person.</p>
           <div class="talk">
             <a class="talk__btn" id="talkWhatsapp" href="https://wa.me/818067467880" target="_blank" rel="noopener"><img class="ic" src="../assets/icons/m/chat.svg" alt="" aria-hidden="true">WhatsApp <span>↗</span></a>
             <a class="talk__btn" href="#qrList"><img class="ic" src="../assets/icons/m/chat.svg" alt="" aria-hidden="true">LINE <span>↓</span></a>
-            <a class="talk__btn" href="#qrList"><img class="ic" src="../assets/icons/m/chat.svg" alt="" aria-hidden="true">WeCom <span>↓</span></a>
+            <a class="talk__btn" href="#qrList"><img class="ic" src="../assets/icons/m/chat.svg" alt="" aria-hidden="true">WeChat <span>↓</span></a>
             <a class="talk__btn" href="tel:+81345883364"><img class="ic" src="../assets/icons/m/phone.svg" alt="" aria-hidden="true">Call us <span>↗</span></a>
           </div>
         </div>
-      </div>
+        </div>
+      </aside>
     </div>
   </div>
   <svg class="wave bottom" viewBox="0 0 1800 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 C300 50 700 50 1000 25 S1500 0 1800 30 V50 H0Z" fill="#F7F1E6"/></svg>
@@ -214,7 +194,6 @@
       <p class="tagline" data-t="why.items.0.tagline">Generous space that gives your mind room, too.</p>
       <p class="body" data-t="why.items.0.body">Layouts with a place for everyone, even for a family of four — room for kids at play and for grown-ups unwinding on the sofa.</p>
       <ul class="dots" data-li="why.items.0.bullets"><li>Living &amp; dining for the whole family</li><li>A kitchen of your own</li><li>Short or long stays</li></ul>
-      <a class="btn btn--yellow btn--sm" data-booking="main" href="#book"><span data-t="why.items.0.button">Find a spacious stay</span> <span class="arr down">↓</span></a>
     </div></div>
   </div>
 
@@ -226,7 +205,6 @@
       <p class="tagline" data-t="why.items.1.tagline">A base connected to the pulse of the city.</p>
       <p class="body" data-t="why.items.1.body">Step outside into the lively heart of town. Shop the markets, eat your way through the streets, and never worry about the way home.</p>
       <ul class="dots" data-li="why.items.1.bullets"><li>Near stations &amp; downtown</li><li>Local markets &amp; street food</li><li>Easy evening walks</li></ul>
-      <a class="btn btn--yellow btn--sm" data-booking="main" href="#book"><span data-t="why.items.1.button">Find a city-center stay</span> <span class="arr down">↓</span></a>
     </div></div>
   </div>
 
@@ -238,7 +216,6 @@
       <p class="tagline" data-t="why.items.2.tagline">Invisible intelligence, seamless experience.</p>
       <p class="body" data-t="why.items.2.body">Skip the front desk and head straight to your room with a smart lock. Need a hand during your stay? Our team is on call every day.</p>
       <ul class="dots" data-li="why.items.2.bullets"><li>Self check-in by smart lock</li><li>Contact-free entry</li><li>Daily concierge support</li></ul>
-      <a class="btn btn--yellow btn--sm" href="#concierge"><span data-t="why.items.2.button">How smart check-in works</span> <span class="arr fwd">→</span></a>
     </div></div>
   </div>
 </section>
@@ -308,7 +285,7 @@
             <dt>Email</dt><dd><a href="mailto:vip@ostay.net">vip@ostay.net</a></dd>
             <dt>WhatsApp</dt><dd><a href="https://wa.me/818067467880" target="_blank" rel="noopener">+81 8067467880</a></dd>
             <dt>LINE ID</dt><dd>18918689798</dd>
-            <dt>WeCom</dt><dd>18918689798</dd>
+            <dt>WeChat</dt><dd>18918689798</dd>
           </dl>
         </div>
         <div class="support__col">
@@ -339,6 +316,6 @@
   <a class="btn btn--yellow" data-booking="main" href="#book">Book <span class="arr down">↓</span></a>
 </div>
 
-<script src="script.js?v=v2-20261116"></script>
+<script src="script.js?v=v2-20261122"></script>
 </body>
 </html>

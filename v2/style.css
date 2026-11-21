@@ -1,3 +1,7 @@
+/* Self-hosted Montserrat (works in mainland China and abroad) */
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/montserrat-300.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/montserrat-400.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(../assets/fonts/montserrat-600.woff2) format('woff2')}
 /* OSTAY — Stay Simple. Stay Curious. */
 :root{
   --obsidian:#2D2926; --yellow:#E5A93C; --bg:#F7F1E6; --sand:#EFE4D2; --ivory:#FDFBF7; --line:#3B2F26;
@@ -481,4 +485,52 @@ button,input{font:inherit;color:inherit}
 @media (max-width:768px){
   .nav{transform:translateY(-140%);opacity:0;pointer-events:none;transition:transform .4s var(--ease),opacity .3s}
   .header.open .nav{transform:none;opacity:1;pointer-events:auto}
+}
+
+/* ---------- Members: flat "What's included" + yellow sign-up panel side by side（2026-11-22） ---------- */
+.mem__grid{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:72px;align-items:start;margin-top:96px}
+.inc__item{display:grid;grid-template-columns:60px minmax(0,1fr) 220px;gap:0 24px;padding:32px 0;border-bottom:1px solid var(--obsidian)}
+.inc .mem__inc{padding-bottom:18px;border-bottom:1px solid var(--obsidian);margin-bottom:0}
+.inc__badge{width:60px;height:60px;border-radius:50%;background:var(--ivory);display:grid;place-items:center}
+.inc__badge .ic{width:30px;height:30px}
+.inc__num{font-size:11px;line-height:16px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.inc__title{font-size:21px;font-weight:600;line-height:1.3;margin-bottom:12px}
+.inc__body>p{font-size:14px}
+.inc__body .hotel__tags{margin-top:14px}
+.inc__body .tag{background:var(--ivory)}
+.inc__img{width:220px;height:100%;min-height:200px;max-height:300px;object-fit:cover;border-radius:14px;background:var(--sand)}
+.mem__side{position:sticky;top:100px;display:flex;flex-direction:column;gap:0}
+.mem__side .member-card{margin:0 auto -64px;width:88%;position:relative;z-index:2}
+.join.join--yellow{display:block;margin:0;padding:96px 36px 36px;border-radius:28px;background:var(--yellow)}
+.join--yellow .join__title{font-size:34px;margin:12px 0 10px}
+.join--yellow .join__sub{font-size:15px;margin-bottom:24px}
+.join--yellow .join__fields{grid-template-columns:1fr;gap:16px}
+.join--yellow .field input{border-bottom-color:rgba(45,41,38,.45)}
+.join--yellow .field input:focus{border-color:var(--obsidian)}
+.join--yellow .field input::placeholder{color:rgba(45,41,38,.5)}
+.join--yellow .join__btn{align-self:stretch;justify-content:center}
+.join--yellow .join__privacy{opacity:.75}
+.join--yellow .join__talk{border-top-color:rgba(45,41,38,.25)}
+.join--yellow .join__talk p{opacity:.8}
+.join--yellow .talk{grid-template-columns:1fr 1fr}
+.join--yellow .talk__btn{border-color:rgba(45,41,38,.4);color:var(--obsidian);background:rgba(253,251,247,.35)}
+@media (max-width:1200px){
+  .mem__grid{grid-template-columns:minmax(0,1fr) 400px;gap:48px}
+  .inc__item{grid-template-columns:60px minmax(0,1fr)}
+  .inc__img{grid-column:2;width:100%;height:auto;max-height:none;aspect-ratio:16/9;margin-top:18px}
+}
+@media (max-width:900px){
+  .mem__grid{grid-template-columns:1fr;gap:56px;margin-top:48px}
+  .mem__side{position:static;max-width:520px;width:100%;margin:0 auto}
+}
+@media (max-width:768px){
+  .inc__item{grid-template-columns:44px minmax(0,1fr);gap:0 12px;padding:24px 0}
+  .inc__badge{width:44px;height:44px}
+  .inc__badge .ic{width:22px;height:22px}
+  .inc__title{font-size:17px}
+  .inc__img{grid-column:1 / -1}
+  .join.join--yellow{padding:84px 22px 28px;border-radius:24px}
+  .join--yellow .join__title{font-size:28px}
+  .mem__side .member-card{width:100%;margin-bottom:-48px}
+  .join.join--yellow{padding-top:72px}
 }

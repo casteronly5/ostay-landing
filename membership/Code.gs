@@ -127,6 +127,7 @@ function doPost(e) {
   let result;
   try {
     result = register_(name, email);
+    SpreadsheetApp.flush(); // save the new row before the next sign-up reads the sheet
   } finally {
     lock.releaseLock();
   }
