@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>OSTAY Members · Admin</title>
+<style>
+@font-face{font-family:'Montserrat';font-weight:400;src:url(../../assets/fonts/montserrat-400.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:600;src:url(../../assets/fonts/montserrat-600.woff2) format('woff2')}
+:root{--ink:#2D2926;--y:#E5A93C;--bg:#F7F1E6;--iv:#FDFBF7;--line:rgba(45,41,38,.14)}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Montserrat',system-ui,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+header img{height:28px}
+header h1{font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.card{background:var(--iv);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(45,41,38,.06)}
+#login{max-width:420px;margin:12vh auto 0}
+#login h2{font-size:22px;margin-bottom:6px}
+#login p{opacity:.7;margin-bottom:20px}
+input{font:inherit;width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;outline:none}
+input:focus{border-color:var(--y)}
+button{font:inherit;font-weight:600;border:0;border-radius:999px;padding:12px 22px;cursor:pointer;background:var(--ink);color:var(--iv)}
+button.y{background:var(--y);color:var(--ink)}
+#login button{width:100%;margin-top:14px}
+.err{color:#b3261e;margin-top:10px;min-height:20px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+.bar input{max-width:320px}
+.stat{margin-left:auto;display:flex;gap:22px}
+.stat b{display:block;font-size:22px}
+.stat span{font-size:12px;opacity:.6}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;cursor:pointer;user-select:none}
+td.id{font-weight:600}
+.scroll{overflow-x:auto}
+.empty{padding:40px;text-align:center;opacity:.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="../../assets/brand/ostay-logo.png" alt="OSTAY"><h1>Members admin</h1></header>
+
+  <form class="card" id="login">
+    <h2>Member list</h2>
+    <p>Enter the admin password · 请输入管理密码</p>
+    <input type="password" id="pw" autocomplete="current-password" placeholder="Password" required>
+    <button type="submit">Open</button>
+    <div class="err" id="err"></div>
+  </form>
+
+  <section id="list" hidden>
+    <div class="bar">
+      <input type="search" id="q" placeholder="Search name, email or member ID · 搜索">
+      <button class="y" id="csv" type="button">Download Excel (CSV)</button>
+      <button id="refresh" type="button">Refresh</button>
+      <div class="stat"><div><b id="total">0</b><span>Members</span></div><div><b id="week">0</b><span>Last 7 days</span></div></div>
+    </div>
+    <div class="card scroll">
+      <table>
+        <thead><tr><th data-k="member_id">Member ID</th><th data-k="name">Name</th><th data-k="email">Email</th><th data-k="joined_at">Joined</th><th data-k="last_request">Last request</th><th data-k="requests">Requests</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="empty" hidden>No members yet.</div>
+    </div>
+  </section>
+</div>
+<script>
+let endpoint = '', members = [], pw = '', sortKey = 'member_id', sortDir = 1;
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmt = ms => ms ? new Date(ms).toLocaleString('en-GB', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) + ' JST' : '';
+
+fetch('../content/site.json', { cache: 'no-cache' }).then(r => r.json()).then(s => { endpoint = (s.membership_endpoint || '').trim(); })
+  .catch(() => {}).finally(() => { if (!endpoint) $('err').textContent = 'Sign-up service not connected yet (content/site.json → membership_endpoint).'; });
+
+async function load() {
+  const res = await fetch(endpoint, { method: 'POST', body: new URLSearchParams({ action: 'admin_list', password: pw }) });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401) throw new Error('Wrong password · 密码不正确');
+  if (!data.ok) throw new Error('Could not load the list. Please try again.');
+  members = data.members || [];
+  render();
+}
+
+function render() {
+  const q = $('q').value.trim().toLowerCase();
+  const list = members.filter(m => !q || [m.member_id, m.name, m.email].join(' ').toLowerCase().includes(q))
+    .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : a[sortKey] < b[sortKey] ? -1 : 0) * sortDir);
+  $('rows').innerHTML = list.map(m => `<tr><td class="id">${esc(m.member_id)}</td><td>${esc(m.name)}</td><td><a href="mailto:${esc(m.email)}">${esc(m.email)}</a></td><td>${fmt(m.joined_at)}</td><td>${fmt(m.last_request)}</td><td>${m.requests}</td></tr>`).join('');
+  $('empty').hidden = members.length > 0;
+  $('total').textContent = members.length;
+  $('week').textContent = members.filter(m => Date.now() - m.joined_at < 7 * 864e5).length;
+}
+
+$('login').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!endpoint) return;
+  pw = $('pw').value; $('err').textContent = 'Loading…';
+  try { await load(); $('login').hidden = true; $('list').hidden = false; }
+  catch (err) { $('err').textContent = err.message; }
+});
+$('q').addEventListener('input', render);
+$('refresh').addEventListener('click', () => load().catch(err => alert(err.message)));
+document.querySelectorAll('th[data-k]').forEach(th => th.addEventListener('click', () => {
+  sortDir = sortKey === th.dataset.k ? -sortDir : 1; sortKey = th.dataset.k; render();
+}));
+$('csv').addEventListener('click', () => {
+  const cell = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+  const lines = [['Member ID', 'Name', 'Email', 'Joined (JST)', 'Last request (JST)', 'Requests']]
+    .concat(members.map(m => [m.member_id, m.name, m.email, fmt(m.joined_at), fmt(m.last_request), m.requests]));
+  const blob = new Blob(['﻿' + lines.map(r => r.map(cell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'ostay-members-' + new Date().toISOString().slice(0, 10) + '.csv'; a.click();
+});
+</script>
+</body>
+</html>
