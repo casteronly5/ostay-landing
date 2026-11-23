@@ -24,13 +24,13 @@ function hydrate(site) {
   }).join('');
   if (Array.isArray(f.qr_codes)) document.getElementById('qrList').innerHTML = f.qr_codes.map(q =>
     `<figure class="qr"><img src="${esc(asset(q.image))}" alt="${esc(q.label)} QR code" loading="lazy"><figcaption>${esc(q.label)}</figcaption></figure>`).join('');
-  const pv = document.getElementById('privacyLink'); if (f.privacy_url) pv.href = f.privacy_url;
+  const pv = document.getElementById('privacyLink'); if (f.privacy_url) pv.href = f.privacy_url; else pv.hidden = true;
   if (site.booking_url) CONFIG.bookingUrl = site.booking_url;
 }
 
 /* ---------- Booking links ---------- */
-/* Booking links: temporarily scroll to the on-page booking block (#book) instead of an external site */
-document.querySelectorAll('[data-booking="main"]').forEach(a => { a.href = '#book'; a.removeAttribute('target'); a.removeAttribute('rel'); });
+/* Booking links: scroll to the hotels section (each hotel card links to its own Booking.com page) */
+document.querySelectorAll('[data-booking="main"]').forEach(a => { a.href = '#destinations'; a.removeAttribute('target'); a.removeAttribute('rel'); });
 
 /* ---------- Destinations: city cards → city view ---------- */
 const stage = document.getElementById('destStage');

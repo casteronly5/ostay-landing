@@ -22,12 +22,12 @@
   <div class="wrap">
     <a href="#top" class="logo" aria-label="OSTAY home"><img src="../assets/brand/ostay-logo.png" alt="OSTAY"></a>
     <nav class="nav" id="nav">
-      <a href="#why">Experience</a>
       <a href="#destinations">Destinations</a>
       <a href="#members">Membership</a>
-      <a href="#concierge">About OSTAY</a>
+      <a href="#why">Experience</a>
+      <a href="#concierge">Concierge</a>
     </nav>
-    <a class="btn btn--yellow btn--sm" data-booking="main" href="#book">Book your stay <span class="arr down">↓</span></a>
+    <a class="btn btn--yellow btn--sm" data-booking="main" href="#destinations">Book your stay <span class="arr down">↓</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -36,7 +36,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero__bg" id="heroSlides" role="img" aria-label="OSTAY stays in Tokyo, Osaka and Phuket">
+  <div class="hero__bg" id="heroSlides" role="img" aria-label="OSTAY stays in Tokyo, by Mt. Fuji and in Bangkok">
     <div class="hero__slide is-on" style="--img:url(../assets/hero/slides/07-tokyo-tower-living.jpg)"></div>
   </div>
   <div class="hero__dots" id="heroDots" aria-label="Choose image"></div>
@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-    <p class="note">* Choose a city to see its stays. Booking.com buttons take you to booking information below.</p>
+    <p class="note">* Choose a city to see its stays. Each Booking.com button opens that stay’s page on Booking.com.</p>
   </div>
 </section>
 
@@ -227,7 +227,7 @@
       <div class="cons__head reveal">
         <p class="eyebrow" data-t="concierge.eyebrow">04 · Concierge</p>
         <h2 class="h2" data-t="concierge.title">Free to explore.<br>Safe to return.</h2>
-        <a class="btn btn--ghost btn--sm cons__cta" href="#contact">Ask our concierge <span class="arr fwd">→</span></a>
+        <a class="btn btn--ghost btn--sm cons__cta" href="#support">Ask our concierge <span class="arr down">↓</span></a>
       </div>
       <div class="points reveal">
         <div><b>01</b><div><h4 data-t="concierge.points.0.title">A real person, every day</h4><p data-t="concierge.points.0.body">Our concierge team is on call every day: 9:00–22:00 JST (Japan) · 8:00–23:00 ICT (Thailand).</p></div></div>
@@ -248,7 +248,7 @@
         <li><img src="../assets/icons/support.svg" alt=""><span class="lg">Daily support</span><span class="sm">Daily support</span></li>
       </ul>
       <p class="partner" data-t="concierge.partner">We partner with trusted locals to make every stay safe and special.</p>
-      <a class="btn btn--ghost cons__cta-m" href="#contact">Ask our concierge <span class="arr fwd">→</span></a>
+      <a class="btn btn--ghost cons__cta-m" href="#support">Ask our concierge <span class="arr down">↓</span></a>
     </div>
   </div>
 </section>
@@ -261,8 +261,8 @@
       <h2 data-t="cta.title">Your next everyday<br>starts here.</h2>
       <p data-t="cta.lead">Tokyo and Osaka now, more cities soon. Hand-picked homes, booked in a few clicks.</p>
       <div class="cta__btns">
-        <a class="btn btn--dark" data-booking="main" href="#book">Book your stay <span class="arr down">↓</span></a>
-        <a class="btn btn--ghost" href="#destinations">See all destinations <span class="arr down">↓</span></a>
+        <a class="btn btn--dark" data-booking="main" href="#destinations">Book your stay <span class="arr up">↑</span></a>
+        <a class="btn btn--ghost" href="#members">Join OSTAY Members <span class="arr up">↑</span></a>
       </div>
       <img class="cta__mascot" src="../assets/brand/mascot-family.webp" alt="The OSTAY family mascots">
     </div>
@@ -277,13 +277,13 @@
   <div class="wrap">
     <div class="footer__top">
       <p class="footer__slogan" data-t="footer.slogan">Stay Simple.<br>Stay Curious.</p>
-      <div class="support">
+      <div class="support" id="support">
         <div class="support__col">
           <p class="eyebrow">Customer support</p>
           <dl id="contactList">
             <dt>Emergency</dt><dd><a href="tel:+81345883364">03 4588 3364</a></dd>
             <dt>Email</dt><dd><a href="mailto:vip@ostay.net">vip@ostay.net</a></dd>
-            <dt>WhatsApp</dt><dd><a href="https://wa.me/818067467880" target="_blank" rel="noopener">+81 8067467880</a></dd>
+            <dt>WhatsApp</dt><dd><a href="https://wa.me/818067467880" target="_blank" rel="noopener">+81 80 6746 7880</a></dd>
             <dt>LINE ID</dt><dd>18918689798</dd>
             <dt>WeChat</dt><dd>18918689798</dd>
           </dl>
@@ -302,8 +302,8 @@
     <div class="footer__bottom">
       <img src="../assets/brand/ostay-logo.png" alt="OSTAY">
       <div class="footer__links">
-        <a data-booking="main" href="#book">Official site</a>
-        <a href="#contact">Contact</a>
+        <a data-booking="main" href="#destinations">Book a stay</a>
+        <a href="#support">Contact</a>
         <a href="#" id="privacyLink">Privacy</a>
       </div>
     </div>
@@ -313,7 +313,7 @@
 <!-- Mobile sticky booking bar -->
 <div class="sticky-book" id="stickyBook">
   <span>Hand-picked homes</span>
-  <a class="btn btn--yellow" data-booking="main" href="#book">Book <span class="arr down">↓</span></a>
+  <a class="btn btn--yellow" data-booking="main" href="#destinations">Book <span class="arr down">↓</span></a>
 </div>
 
 <script src="script.js?v=v2-20261122"></script>

@@ -31,6 +31,7 @@ button,input{font:inherit;color:inherit}
 .btn:hover .arr.ext{transform:translate(3px,-3px)}
 .btn:hover .arr.fwd{transform:translateX(4px)}
 .btn:hover .arr.down{transform:translateY(3px)}
+.btn:hover .arr.up{transform:translateY(-3px)}
 .link{font-size:14px;font-weight:600;border-bottom:1px solid currentColor;padding-bottom:4px;display:inline-flex;gap:8px}
 
 /* Header */
