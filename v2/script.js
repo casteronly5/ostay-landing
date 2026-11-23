@@ -58,8 +58,8 @@ function hotelCard(h, i) {
         <p class="hotel__loc">${PIN}${esc(h.location)}</p>
         ${h.address ? `<p class="hotel__addr">${esc(h.address)}</p>` : ''}
         ${h.tags?.length ? `<div class="hotel__tags">${h.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
-        <a class="bk-btn" href="#book" data-url="${esc(h.url)}" aria-label="Book ${esc(h.name)}">
-          <img src="../assets/brand/booking-logo.png" alt="Booking.com"><span>↓</span>
+        <a class="bk-btn" href="${esc(h.url || CONFIG.bookingUrl)}" target="_blank" rel="noopener" aria-label="Book ${esc(h.name)} on Booking.com">
+          <img src="../assets/brand/booking-logo.png" alt="Booking.com"><span>↗</span>
         </a>
       </div>
     </article>`;
